@@ -1,0 +1,16 @@
+{
+  "short_name": "NicoNoClaste",
+  "name": "NicoNoClaste | WEB DEVELOPER | ウェブデベロッパー",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/img/favicon_x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "display" : "standalone",
+  "background_color": "white",
+  "theme_color": "white"
+}
