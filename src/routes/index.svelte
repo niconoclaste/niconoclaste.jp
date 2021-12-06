@@ -22,7 +22,7 @@
       <p>10+ years <strong>Web Developer</strong></p>
       <p>HTML <strong>CSS</strong> JS <strong>Svelte</strong> SCSS <strong>Vue.js</strong></p>
       <p>TypeScript <strong>Node.js</strong> GraphQL <strong>Ionic</strong> PHP ...</p>
-      <p>- A man <strong>MUST</strong> have a <strong>CODE</strong> -</p>
+      <p>-  A man <strong>MUST</strong> have a <strong>CODE</strong>  -</p>
     </div>
   </section>
 

@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 
 function createTitle() {
-	const {subscribe, set, update} = writable('');
+	const {subscribe, set} = writable('');
 	
 	return {
 		subscribe,
