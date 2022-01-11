@@ -1,4 +1,4 @@
-import posts from '$lib/posts';
+import posts from '/src/posts';
 
 export function get({ params }) {
   const post = posts.find(x => x.slug === params.slug);

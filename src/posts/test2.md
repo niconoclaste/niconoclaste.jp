@@ -11,3 +11,5 @@ New text to check.
 ## A second title
 
 Another text.
+
+<img src="/img/tests/herbie_hancock.jpg" width="100" height="100" alt="herbie">

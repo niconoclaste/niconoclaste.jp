@@ -20,14 +20,14 @@
       <a href="/#codes">Codes</a>
     </li>
 
-    <li class={current === 'blog' ? "is-active" : ''}>
-      <a href="/blog">Blog</a>
-      <!-- <ul>
-        <li>
-          <a href="./blog/howto">How to code</a>
-        </li>
-      </ul> -->
+    <li class={current === 'writings' ? "is-active" : ''}>
+    {#if current === 'home'}
+      <a href="/#writings">Writings</a>
+    {:else}
+        <a href="/writings">Writings</a>
+    {/if}
     </li>
+
     <li>
       <a href="/#contact">Contact</a>
     </li>

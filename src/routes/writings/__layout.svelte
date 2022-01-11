@@ -1,7 +1,7 @@
 <script context="module">
 	export async function load({ params, fetch}) {
     const { slug } = params;
-		const url = '/blog/'+slug+'.json';
+		const url = '/writings/'+slug+'.json';
 		const res = await fetch(url);
 		if (res.ok) {
 			return {
@@ -22,7 +22,7 @@
   import Header from '/src/components/Header.svelte';
 	export const prerender = true;
   export let post;
-	title.set(post.title+ ' | Blog');
+	title.set(post.title+ ' | Writings');
 </script>
 
 <svelte:head>
@@ -31,7 +31,7 @@
 
 <section class="contents">
 
-  <Header current="blog" />
+  <Header current="writings" />
 
 
   <div class="article">

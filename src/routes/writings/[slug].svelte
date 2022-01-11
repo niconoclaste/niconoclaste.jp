@@ -1,5 +1,5 @@
 <script context="module">
-  const allPosts = import.meta.globEager('../../lib/posts/*.md');
+  const allPosts = import.meta.globEager('/src/posts/*.md');
   let posts = [];
   for (let path in allPosts) {
     const post = allPosts[path];

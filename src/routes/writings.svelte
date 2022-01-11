@@ -1,11 +1,12 @@
 <script context="module">
   import { title } from "/src/store.js";
-	title.set('Blog');
+	title.set('writings');
   import Header from '/src/components/Header.svelte';
+  import PostCard from '/src/components/Post-card.svelte';
 	export const prerender = true;
 
   export const load = async({ fetch }) => {
-		const url = './blog/blog.json';
+		const url = '/writings/writings.json';
 		const res = await fetch(url);
     
 		if (res.ok) {
@@ -30,34 +31,9 @@
 
 <section class="contents">
 
-  <Header current="blog" />
+  <Header current="writings" />
 
-  <h1>My blog !!!</h1>
+  <h1>My writings !!!</h1>
   <p>TODO...</p>
-  <ul>
-  {#each posts as post}
-    <li>
-      <h2>{post.title}</h2>
-      <p>{post.excerpt}</p>
-      <a href="/blog/{post.slug}">MORE</a>
-			{#if post.tags}
-				<div class="tags">
-					{#each post.tags.slice(0, 2) as tag}
-						<span>{tag}</span>
-					{/each}
-				</div>
-			{/if}
-    </li>
-  {/each}
-  </ul>
+  <PostCard posts={posts} />
 </section>
-
-
-<style>
-ul{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
-  list-style:none;
-}
-</style>

@@ -1,13 +1,11 @@
 ---
 slug: test
-title: Post test
+title: Post 1 title
 date: 2022-01-11
 excerpt: "A quick test post."
 tags: [TEST, POST]
 ---
 
-Text to check.
-
-## A title
+## Post 1 title
 
 Another text.
