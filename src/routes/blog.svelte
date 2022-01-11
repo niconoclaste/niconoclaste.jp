@@ -3,16 +3,26 @@
 	title.set('Blog');
   import Header from '/src/components/Header.svelte';
 	export const prerender = true;
+
   export const load = async({ fetch }) => {
-    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-    const posts = await res.json();
-    return {
-      props: {
-        posts,
-      },
-    };
-  };
+		const url = './blog/blog.json';
+		const res = await fetch(url);
+    
+		if (res.ok) {
+      const posts = await res.json();
+			return {
+				props: {
+					posts
+				}
+			};
+		}
+		return {
+			status: res.status,
+			error: new Error(`Could not load ${url}`)
+		};
+	}
 </script>
+
 <script>
   export let posts;
 </script>
@@ -27,8 +37,16 @@
   <ul>
   {#each posts as post}
     <li>
-      <h2>{post.title.substring(0,30)}</h2>
-      <a href="/blog/{post.id}">MORE</a>
+      <h2>{post.title}</h2>
+      <p>{post.excerpt}</p>
+      <a href="/blog/{post.slug}">MORE</a>
+			{#if post.tags}
+				<div class="tags">
+					{#each post.tags.slice(0, 2) as tag}
+						<span>{tag}</span>
+					{/each}
+				</div>
+			{/if}
     </li>
   {/each}
   </ul>

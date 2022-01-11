@@ -7,7 +7,6 @@
   width:100%;
   height:100vh;
   background-image:url(/img/hero.webp);
-  /* background-image:url(/img/hero.jpg); */
   background-image:url(/img/fullwidth.webp);
   background-position:center center;
   background-repeat:no-repeat;

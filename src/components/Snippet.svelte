@@ -49,7 +49,7 @@
 
 
 
-<style>
+<style global>
   .slider-container{
     position:relative;
     width:80%;
