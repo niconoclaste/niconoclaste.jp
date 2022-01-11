@@ -6,7 +6,14 @@ const config = {
 		target: 'body',
 		adapter: adapter(),
 		router: false,
-	}
+    /*vite: () => ({
+      server: {
+        watch: {
+          include: 'static/global.css'
+        }
+      },
+    })*/
+	},
 };
 
 export default config;
