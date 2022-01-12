@@ -37,7 +37,6 @@ rt{
   text-align:center;
 }
 
-
 img{
   max-width:100%;
   height:auto;
@@ -48,15 +47,16 @@ header{
   position: sticky;
   left: 0;
   z-index: 2;
-  width: 100%;
   height: var(--header-height);
+  height: 100vh;
   top: 0;
-  background: #f33;
   display: flex;
   justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  align-items: flex-start;
   box-sizing:border-box;
-  padding-bottom:7px;
+  padding:20px 0 20px 10px;
 }
 .global-nav{
   display:block;
@@ -66,18 +66,20 @@ header{
   position:relative;
   z-index:2;
   display: flex;
+  flex-direction: column;
   list-style-type: none;
   margin: 0;
   padding: 0;
   gap: 0 10px;
+  align-items:flex-start;
+  justify-content:flex-start;
 }
 .global-nav ul li {
   display: flex;
-  flex-direction: column;
   position: relative;
   justify-content: center;
   transition: transform 0.1s, opacity 0.1s;
-  transform-origin: center center;
+  transform-origin: left center;
   font-weight: 100;
   opacity: 0.5;
 }
@@ -107,44 +109,28 @@ header{
 .global-nav:hover ul li.is-active:hover{
   opacity: 1;
 }
-/* .global-nav ul li:hover > ul{ */
-.global-nav:hover ul li > ul{
+.global-nav ul li:hover ul{
   display:flex;
 }
 .global-nav ul li ul{
   display: none;
-  flex-direction: column;
   position: absolute;
-  top: 100%;
-  left: 0;
-  transform: scale(0.5);
-  transform-origin: left top;
-  width: 200%;
-  width:fit-content;
+  top: 0;
+  left: 100%;
   z-index:-1;
-  background: #f33;
-  overflow:hidden;
+  padding-left:15px;
 }
-.global-nav ul li ul li{
-  transform-origin: left center;
-  text-shadow: none;
-  background: #f33;
-  line-height: 1;
+.global-nav:hover ul li ul li{
   opacity:1;
 }
-.global-nav ul li:hover ul li{
-  opacity:1;
+.global-nav ul li:hover ul li:hover{
+  transform:scale(2);
 }
 .global-nav ul li ul li a{
   font-size: 2.2rem;
+  font-size: 1.2rem;
   width: fit-content;
-  background: #f33;
-  padding: 2px 5px 5px 5px;
   color:rgba(255, 255, 255, 0.5);
-}
-.global-nav ul li ul li:hover{
-  transform:scale(1);
-  z-index:1;
 }
 .global-nav ul li ul li:hover a{
   color:#fff;

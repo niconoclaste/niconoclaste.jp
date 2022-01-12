@@ -34,8 +34,8 @@
   <Header current="home" />
 
   <section class="top-bloc" id="about">
+    <h2>About</h2>
     <div class="desc">
-      <h2>About</h2>
       <p><strong><ruby>Nicolas<rt>二コラ</rt></ruby></strong> (NicoNoClaste)</p>
       <p>made in <strong>Paris</strong> living in <strong>Tokyo</strong></p>
       <p>10+ years <strong>Web Developer</strong></p>
@@ -46,60 +46,58 @@
   </section>
 
   <section class="top-bloc" id="codes">
+    <h2>Codes</h2>
     <div class="desc">
-      <h2>Codes</h2>
 
     </div>
-
   </section>
 
   <section class="top-bloc" id="writings">
+    <h2>Writings</h2>
     <div class="desc">
-      <h2>Writings</h2>
       <PostCard posts={posts} />
-    </div>
-  </section>
-
-  <section class="top-bloc" id="contact">
-    <div class="desc">
-      <h2>Contact</h2>
-
     </div>
   </section>
 </section>
 
 <style global>
 /* top sections */
-.top-bloc p:last-of-type{
-  margin-bottom:0;
-}
-.top-bloc{
-  display:flex;
-  justify-content:center;
+
+.contents > .top-bloc:first-of-type{
+  margin-top:-100vh;
 }
 
-.top-bloc .desc{
-  padding:40px 20px;
-}
-.top-bloc .desc > h2,
-.top-bloc .desc > p{
-  text-shadow: 0 0 2px;
-}
-.top-bloc .desc > h2{
-  font-weight: 900;
-  text-transform: uppercase;
-  font-size: 5rem;
-  margin-bottom: 3rem;
-  line-height: 1.1;
-  text-align: center;
-  display:block;
+
+.top-bloc{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 25rem auto;
+  background-color: mediumseagreen;
+  background-color: #00a850;
+  border-bottom:solid 3px #f9d605;
 }
 .top-bloc .desc{
-  box-sizing: border-box;
+  /* padding:40px 20px; */
+  padding-bottom:10rem;
   display:flex;
   flex-direction:column;
-  justify-content: space-around;
+  align-items: center;
   justify-content: space-between;
+}
+.top-bloc h2,
+.top-bloc .desc > p{
+  text-shadow: 0 0 2px;
+  color: #f9d600;
+}
+.top-bloc h2{
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 7rem;
+  line-height: 1.1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .top-bloc .desc > p{
   font-weight: 900;
@@ -132,14 +130,18 @@
 }
 
 #codes{
-  background:teal;
+  /* background:teal; */
 }
 #codes h2{
-  color: #ffffff;
+  /* color: #ffffff; */
 }
 
 #writings{
-  background:yellow;
+  /* background:indianred; */
+}
+
+#contact{
+  /* background:#6176e0; */
 }
 
 

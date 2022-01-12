@@ -29,7 +29,14 @@
     </li>
 
     <li>
-      <a href="/#contact">Contact</a>
+      <!-- <a href="/#contact">Contact</a> -->
+      <a href="/">Contact</a>
+      <ul>
+        <li><a href="">email</a></li>
+        <li><a href="">email</a></li>
+        <li><a href="">email</a></li>
+        <li><a href="">email</a></li>
+      </ul>
     </li>
   </ul>
 </nav>
