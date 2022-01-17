@@ -5,7 +5,7 @@
 <ul>
 {#each posts as post}
   <li>
-    <a href="/writings/{post.slug}">
+    <a href="/articles/{post.slug}">
       <h2>{post.title}</h2>
       <p>{post.excerpt}</p>
     {#if post.tags}

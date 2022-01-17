@@ -1,12 +1,12 @@
 <script context="module">
   import { title } from "/src/store.js";
-	title.set('writings');
+	title.set('Articles');
   import Header from '/src/components/Header.svelte';
   import PostCard from '/src/components/Post-card.svelte';
 	export const prerender = true;
 
   export const load = async({ fetch }) => {
-		const url = '/writings/writings.json';
+		const url = '/articles/articles.json';
 		const res = await fetch(url);
     
 		if (res.ok) {
@@ -26,14 +26,16 @@
 
 <script>
   export let posts;
+  console.log(posts);
 </script>
 
 
 <section class="contents">
 
-  <Header current="writings" />
-
-  <h1>My writings !!!</h1>
-  <p>TODO...</p>
-  <PostCard posts={posts} />
+  <Header current="articles" />
+  <section>
+    <h1>My articles !!!</h1>
+    <p>TODO...</p>
+    <PostCard posts={posts} />
+  </section>
 </section>

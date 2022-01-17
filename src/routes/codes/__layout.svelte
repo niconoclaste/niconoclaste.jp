@@ -1,7 +1,7 @@
 <script context="module">
 	export async function load({ params, fetch}) {
     const { slug } = params;
-		const url = '/writings/'+slug+'.json';
+		const url = '/codes/'+slug+'.json';
 		const res = await fetch(url);
 		if (res.ok) {
 			return {
@@ -20,23 +20,27 @@
 <script>
   import { title } from "/src/store.js";
   import Header from '/src/components/Header.svelte';
+  import Footer from '/src/components/Footer.svelte';
 	export const prerender = true;
   export let post;
-	title.set(post.title+ ' | Writings');
+	title.set(post.title+ ' | Codes');
 </script>
 
 <svelte:head>
 	<title>{$title}</title>
 </svelte:head>
 
+
 <section class="contents">
 
-  <Header current="writings" />
+  <Header current="codes" />
 
 
-  <div class="article">
+  <section class="top-bloc">
     <h1>{post.title}</h1>
     <slot></slot>
 
-  </div>
+  </section>
+
+  <Footer/>
 </section>

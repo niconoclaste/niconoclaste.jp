@@ -3,11 +3,13 @@
   export let current;
 </script>
 
-<header>
-  {#if current === 'home'}
+<header class="global-header">
   <Nav current={current} />
-  {:else}
-  <h1><a href="/">NicoNoClaste</a></h1>
-  <Nav current={current} />
-  {/if}
 </header>
+<aside>
+{#if current === 'home'}
+  <a href="/#">NicoNoClaste</a>
+{:else}
+  <a href="/">NicoNoClaste</a>
+{/if}
+</aside>
