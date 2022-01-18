@@ -1,8 +1,8 @@
 ---
-slug: about-test
-title: title of test about
+slug: about
+title: title of about
 date: 2022-01-17
-excerpt: "A quick test about post."
+excerpt: "A quick about post."
 tags: [TEST, ABOUT]
 ---
 

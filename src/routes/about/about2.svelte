@@ -1,8 +1,8 @@
 ---
-slug: about-test2
-title: title of test about2
+slug: about2
+title: title of about2
 date: 2022-01-18
-excerpt: "A quick test about2 post."
+excerpt: "A quick about2 post."
 tags: [TEST, ABOUT2]
 ---
 

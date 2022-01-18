@@ -1,6 +1,6 @@
 <script context="module">
   import { title } from "/src/store.js";
-	title.set('about');
+	title.set('test');
   import Header from '/src/components/Header.svelte';
   import Footer from '/src/components/Footer.svelte';
 	export const prerender = true;
@@ -11,7 +11,7 @@
     let posts = await res.json();
     return {
       props: {
-        posts: posts = posts.filter(post => post.category === 'about')
+        posts: posts = posts.filter(post => post.category === 'test')
       }
     };
 	}
@@ -22,11 +22,11 @@
 </script>
 
 <section class="contents">
-  <Header current="about" />
+  <Header current="test" />
   <section class="top-bloc">
 
     <div class="desc">
-      <p>ABOUT !!!</p>
+      <p>TEST !!!</p>
 
       <ul>
         {#each posts as post}
