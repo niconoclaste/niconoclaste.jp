@@ -31,13 +31,6 @@ Powered by svelte & sveltekit !
 ***
 <br>
 
-https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row
-
-<br>
-
-***
-<br>
-
 ## inspirations :
 - https://www.benjimessmer.com/
 - https://mst.agency/
@@ -46,21 +39,3 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row
 - http://kennardlilly.com/
 - https://madebytinygiant.com/
 - https://jacekjeznach.com/
-
-
-<br>
-
-***
-<br>
-
-```css
-/* Hide scrollbar for Chrome, Safari and Opera */
-body::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-body {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
