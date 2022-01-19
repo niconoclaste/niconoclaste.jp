@@ -97,7 +97,7 @@ aside a:hover {
   justify-content: flex-start;
   align-items: flex-start;
   box-sizing: border-box;
-  padding: 10px 0 20px 0;
+  padding: 10px 0 20px 10px;
   /* box-shadow: -4px 0 13px 0 rgb(0 0 0 / 4%); */
   /* border-right: 2px solid rgba(255, 255, 255, 0.12); */
 }
@@ -306,7 +306,13 @@ aside a:hover {
   line-height: 2.3;
   letter-spacing: 0.05rem;
 }
-
+.top-bloc .desc > p strong{
+  color: #f9d600;
+  font-weight: inherit;
+  display: inline-block;
+  line-height:1;
+  font-size: 125%;
+}
 
 /* top about section */
 #about{

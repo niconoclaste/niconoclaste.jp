@@ -13,6 +13,9 @@
   }
 </script>
 
+<svelte:head>
+	<title>{$title}</title>
+</svelte:head>
 
 <section class="contents">
   <Header current="codes" />

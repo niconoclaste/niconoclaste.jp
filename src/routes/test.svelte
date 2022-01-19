@@ -3,23 +3,36 @@
 	title.set('test');
   import Header from '/src/components/Header.svelte';
   import Footer from '/src/components/Footer.svelte';
-	export const prerender = true;
+	// export const prerender = true;
 
-	export async function load({ fetch }) {
-		const url = 'posts.json';
+  export const load = async({ fetch }) => {
+		const url = './posts.json';
 		const res = await fetch(url);
-    let posts = await res.json();
-    return {
-      props: {
-        posts: posts = posts.filter(post => post.category === 'test')
-      }
-    };
-	}
+    
+		if (res.ok) {
+      let posts = await res.json();
+      posts = posts.filter(post => post.category === 'test');
+			return {
+				props: {
+					posts : posts 
+				}
+			};
+		}
+		return {
+			status: res.status,
+			error: new Error(`Could not load ${url}`)
+		};
+  }
 </script>
 
 <script>
   export let posts;
 </script>
+
+<svelte:head>
+	<title>{$title}</title>
+</svelte:head>
+
 
 <section class="contents">
   <Header current="test" />
@@ -46,14 +59,16 @@
             {/if}
             </a>
           </li>
+          <li><p>---------------------------------------------------------</p></li>
         {/each}
         </ul>
-
+        <p>---------------------------------------------------------</p>
       {#each posts as post}
       <section>
         <h2>{post.title}</h2>
         {@html post.html}
       </section>
+      <p>---------------------------------------------------------</p>
       {/each}
     </div>
   </section>

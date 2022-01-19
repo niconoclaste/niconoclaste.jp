@@ -3,18 +3,19 @@
 	title.clear();
   import Header from '/src/components/Header.svelte';
   import Footer from '/src/components/Footer.svelte';
-  import PostCard from '/src/components/Post-card.svelte';
+  // import PostCard from '/src/components/Post-card.svelte';
   export const prerender = true;
 
   export const load = async({ fetch }) => {
-		const url = '/articles/articles.json';
+		const url = 'posts.json';
 		const res = await fetch(url);
     
 		if (res.ok) {
-      const posts = await res.json();
+      let posts = await res.json();
+      posts = posts
 			return {
 				props: {
-					posts
+					posts : posts 
 				}
 			};
 		}
@@ -22,11 +23,17 @@
 			status: res.status,
 			error: new Error(`Could not load ${url}`)
 		};
-	}
+  }
 </script>
 <script>
   export let posts;
+  export let testPosts = posts.filter(post => post.category === 'test');
+  export let aboutPosts = posts.filter(post => post.category === 'about');
 </script>
+
+<svelte:head>
+	<title>{$title}</title>
+</svelte:head>
 
 
 <section class="hero">
@@ -46,6 +53,14 @@
       <p>HTML <strong>CSS</strong> JS <strong>Svelte</strong> SCSS <strong>Vue.js</strong> TypeScript</p>
       <p><strong>Node.js</strong> GraphQL <strong>Ionic</strong> Wordpress <strong>PHP</strong> ...</p>
       <p><strong>〈　</strong>A man <strong>MUST</strong> have a <strong>CODE</strong><strong>　〉</strong></p>
+
+      <p>
+        {#each aboutPosts as post}
+        <a href="{post.url}"><strong>{post.title}</strong></a><br>
+        {/each}
+      </p>
+
+      <p><a href="/about"><strong>SEE MORE</strong></a></p>
     </div>
   </section>
 
@@ -67,6 +82,7 @@
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
+      <p><a href="/codes"><strong>SEE MORE</strong></a></p>
     </div>
   </section>
 
@@ -74,7 +90,19 @@
     <!-- <h2><ruby>Scribbles<rt> スクリブルス</rt></ruby></h2> -->
     <h2><ruby>Articles<rt>ライティングス</rt></ruby></h2>
     <div class="desc">
-      <PostCard posts={posts} />
+      <!-- <PostCard posts={posts} /> -->
+    </div>
+  </section>
+
+  <section class="top-bloc" id="test">
+    <h2><ruby>test<rt>テスト</rt></ruby></h2>
+    <div class="desc">
+      <p>
+      {#each testPosts as post}
+      <a href="{post.url}"><strong>{post.title}</strong></a><br>
+      {/each}
+      </p>
+      <!-- <PostCard posts={posts} /> -->
     </div>
   </section>
 </section>

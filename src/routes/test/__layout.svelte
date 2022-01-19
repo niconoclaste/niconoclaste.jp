@@ -2,30 +2,38 @@
   import { title } from "/src/store.js";
   import Header from '/src/components/Header.svelte';
   import Footer from '/src/components/Footer.svelte';
-	export const prerender = true;
-
-  const allPosts = import.meta.globEager('./*.svelte');
-  let posts = [];
-  for (let path in allPosts) {
-    const post = allPosts[path];
-    if(post.metadata){
-      posts.push({ 
-        post,
-         ...post.metadata 
-      });
+  export const load = async({ url }) => {
+    const allPosts = import.meta.globEager('./*.svelte');
+    let posts = [];
+    for (let path in allPosts) {
+      const post = allPosts[path];
+      if(post.metadata){
+        posts.push({ 
+          post,
+          ...post.metadata 
+        });
+      }
     }
+    const pageUrl = url.pathname;
+    const parts = pageUrl.split('/');
+    const lastSegment = parts.pop() || parts.pop();
+    const currPost = posts.filter(post => post.slug === lastSegment)
+    let category = pageUrl.split('/');
+    category = category[0];
+    const postCategory = category.charAt(0).toUpperCase() + category.slice(1);
+    let postTitle = currPost[0].title;
+    postTitle = postTitle.charAt(0).toUpperCase() + postTitle.slice(1);
+    title.set(postTitle+ ' | '+postCategory);
+    return {
+				props: {
+					category
+				}
+			};
   }
-  const pageUrl = window.location.href;
-  const parts = pageUrl.split('/');
-  const lastSegment = parts.pop() || parts.pop();
-  const currPost = posts.filter(post => post.slug === lastSegment)
-  let category = pageUrl.split('/');
-  category = category[category.length - 2];
-  let postCategory = category.charAt(0).toUpperCase() + category.slice(1);
-  let postTitle = currPost[0].title;
-  postTitle = postTitle.charAt(0).toUpperCase() + postTitle.slice(1);
+</script>
 
-  title.set(postTitle+ ' | '+postCategory);
+<script>
+  export let category;
 </script>
 
 <svelte:head>

@@ -3,23 +3,36 @@
 	title.set('about');
   import Header from '/src/components/Header.svelte';
   import Footer from '/src/components/Footer.svelte';
-	export const prerender = true;
+	// export const prerender = true;
 
-	export async function load({ fetch }) {
-		const url = 'posts.json';
+
+  export const load = async({ fetch }) => {
+		const url = './posts.json';
 		const res = await fetch(url);
-    let posts = await res.json();
-    return {
-      props: {
-        posts: posts = posts.filter(post => post.category === 'about')
-      }
-    };
-	}
+    
+		if (res.ok) {
+      let posts = await res.json();
+      posts = posts.filter(post => post.category === 'about');
+			return {
+				props: {
+					posts : posts 
+				}
+			};
+		}
+		return {
+			status: res.status,
+			error: new Error(`Could not load ${url}`)
+		};
+  }
 </script>
 
 <script>
   export let posts;
 </script>
+
+<svelte:head>
+	<title>{$title}</title>
+</svelte:head>
 
 <section class="contents">
   <Header current="about" />
