@@ -9,7 +9,6 @@
   for (let path in allPosts) {
     const post = allPosts[path];
     posts.push({ post, ...post.metadata });
-    console.log(post);
   }
 </script>
 
