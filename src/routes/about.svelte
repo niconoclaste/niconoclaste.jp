@@ -1,11 +1,4 @@
 <script context="module">
-  import { title } from "/src/store.js";
-	title.set('about');
-  import Header from '/src/components/Header.svelte';
-  import Footer from '/src/components/Footer.svelte';
-	// export const prerender = true;
-
-
   export const load = async({ fetch }) => {
 		const url = './posts.json';
 		const res = await fetch(url);
@@ -27,6 +20,10 @@
 </script>
 
 <script>
+  import { title } from "/src/store.js";
+  // import { getContext } from 'svelte';
+	title.set('About');
+  // getContext('setLayout')('inside');
   export let posts;
 </script>
 
@@ -34,11 +31,6 @@
 	<title>{$title}</title>
 </svelte:head>
 
-<section class="contents">
-  <Header current="about" />
-  <section class="top-bloc">
-
-    <div class="desc">
       <p>ABOUT !!!</p>
 
       <ul>
@@ -68,10 +60,7 @@
         {@html post.html}
       </section>
       {/each}
-    </div>
-  </section>
-  <Footer/>
-</section>
+
 
 
 <style>

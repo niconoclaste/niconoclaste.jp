@@ -13,5 +13,6 @@ function createTitle() {
 		}
 	}
 }
-
 export const title = createTitle();
+
+export const thelayout = writable('');

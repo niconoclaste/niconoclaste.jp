@@ -3,11 +3,8 @@
 	title.clear();
   import Header from '/src/components/Header.svelte';
   import Footer from '/src/components/Footer.svelte';
-  // import PostCard from '/src/components/Post-card.svelte';
-  export const prerender = true;
-
   export const load = async({ fetch }) => {
-		const url = 'posts.json';
+		const url = '/posts.json';
 		const res = await fetch(url);
     
 		if (res.ok) {
@@ -25,6 +22,7 @@
 		};
   }
 </script>
+
 <script>
   export let posts;
   export let testPosts = posts.filter(post => post.category === 'test');
