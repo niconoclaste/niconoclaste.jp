@@ -21,12 +21,13 @@
     {/if}
     </li>
 
-    <li class={current === 'codes' ? "is-active" : ''}>
+    <li><a href="/#codes">Codes</a></li>
+    <!-- <li class={current === 'codes' ? "is-active" : ''}>
     {#if current === 'home'}
       <a href="/#codes">Codes</a>
     {:else}
       <a href="/codes">Codes</a>
-    {/if}
+    {/if} -->
 
     <li class={current === 'articles' ? "is-active" : ''}>
     {#if current === 'home'}
@@ -37,7 +38,7 @@
     </li>
 
     <li>
-      <a href="mailto:nicolas.bernard.80@gmail.com">Contact</a>
+      <a href="mailto:test@test.com">Contact</a>
       <!-- <ul>
         <li><a href="https://twitter.com/NicoloNoClaste/" target="_blank" rel="noreferrer">twitter</a></li>
         <li><a href="https://codepen.io/niconoclaste/" target="_blank" rel="noreferrer">codepen</a></li>

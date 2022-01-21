@@ -4,7 +4,7 @@ for (const path in imports) {
 	const post = imports[path];
 	if (post) {
     if (post.metadata) {
-      const category = path.replace('/src/routes/', '').replace('/'+post.metadata.slug+'.svelte', '');
+      const category = post.metadata.category;
       const url = path.replace('/src/routes', '').replace('.svelte', '/');
       posts.push({
         category,

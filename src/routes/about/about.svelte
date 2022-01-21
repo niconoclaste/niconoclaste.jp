@@ -4,6 +4,7 @@ title: title of about
 date: 2022-01-17
 excerpt: "A quick about post."
 tags: [TEST, ABOUT]
+category: about
 ---
 
   <h2>ABOUT ME</h2>

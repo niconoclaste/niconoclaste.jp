@@ -1,15 +1,10 @@
 <script context="module">
-  import { title } from "/src/store.js";
-	title.clear();
-  import Header from '/src/components/Header.svelte';
-  import Footer from '/src/components/Footer.svelte';
   export const load = async({ fetch }) => {
-		const url = '/posts.json';
+		const url = '/api/posts.json';
 		const res = await fetch(url);
-    
 		if (res.ok) {
       let posts = await res.json();
-      posts = posts
+      posts = posts;
 			return {
 				props: {
 					posts : posts 
@@ -24,14 +19,14 @@
 </script>
 
 <script>
+  import Header from '/src/components/Header.svelte';
+  import Footer from '/src/components/Footer.svelte';
+
   export let posts;
-  export let testPosts = posts.filter(post => post.category === 'test');
+  export let articles = posts.filter(post => post.category === 'articles');
   export let aboutPosts = posts.filter(post => post.category === 'about');
 </script>
 
-<svelte:head>
-	<title>{$title}</title>
-</svelte:head>
 
 
 <section class="hero">
@@ -85,22 +80,14 @@
   </section>
 
   <section class="top-bloc" id="articles">
-    <!-- <h2><ruby>Scribbles<rt> スクリブルス</rt></ruby></h2> -->
     <h2><ruby>Articles<rt>ライティングス</rt></ruby></h2>
     <div class="desc">
-      <!-- <PostCard posts={posts} /> -->
-    </div>
-  </section>
-
-  <section class="top-bloc" id="test">
-    <h2><ruby>test<rt>テスト</rt></ruby></h2>
-    <div class="desc">
       <p>
-      {#each testPosts as post}
+      {#each articles as post}
       <a href="{post.url}"><strong>{post.title}</strong></a><br>
       {/each}
       </p>
-      <!-- <PostCard posts={posts} /> -->
+      <p><a href="/articles"><strong>SEE MORE</strong></a></p>
     </div>
   </section>
 </section>

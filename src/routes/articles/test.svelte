@@ -4,6 +4,7 @@ title: test
 date: 2022-01-17
 excerpt: "A quick test post."
 tags: [TEST]
+category: articles
 ---
 
   <h2>TEST ME</h2>
