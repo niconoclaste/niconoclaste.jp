@@ -6,7 +6,7 @@
 <header class="global-header">
   <Nav current={current} />
 </header>
-<aside>
+<aside class="global-aside">
 {#if current === 'home'}
   <a href="/#">NicoNoClaste</a>
 {:else}

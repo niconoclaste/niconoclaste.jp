@@ -45,7 +45,4 @@
   ul li a{
     color:black;
   }
-  img {
-    margin:0 auto;
-  }
 </style>

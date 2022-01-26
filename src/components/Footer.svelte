@@ -1,4 +1,7 @@
-<footer class="global-footer">
+<script>
+  let year = new Date().getFullYear();
+</script>
 
-<p>&copy; 2022 NicoNoClaste</p>
+<footer class="global-footer">
+  <p>&copy; {year} NicoNoClaste</p>
 </footer>

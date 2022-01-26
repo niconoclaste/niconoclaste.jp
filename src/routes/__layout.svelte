@@ -49,6 +49,7 @@ console.log({category});
 
 {#if layout === 'home'}
 <slot></slot>
+<Footer/>
 {:else if layout === 'inside'}
 <section class="contents">
   <Header current={category} />

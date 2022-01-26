@@ -5,7 +5,7 @@
     
 		if (res.ok) {
       let posts = await res.json();
-      posts = posts.filter(post => post.category === 'articles');
+      posts = posts.filter(post => post.category === 'articles' && !post.hidden);
 			return {
 				props: {
 					posts : posts 

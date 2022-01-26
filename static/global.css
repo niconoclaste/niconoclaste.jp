@@ -1,7 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900');
+/* @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap'); */
 
 
 /* -- COMMON ------------------ */
@@ -15,6 +17,12 @@
 }
 html{
   scroll-behavior: smooth;
+}
+html[lang="ja"] [lang="en"]:not(.js-switch-lang),
+html[lang="en"] [lang="ja"]:not(.js-switch-lang),
+html[lang="ja"] .js-switch-lang[lang="ja"],
+html[lang="en"] .js-switch-lang[lang="en"]{
+  display:none !important;
 }
 body{
   font-size:1.6rem;
@@ -31,6 +39,8 @@ body{
     color:white;
   }
 }
+
+/* -- resets -- */
 h1, h2, h3, h4, h5, h6, p{
   margin:0;
 }
@@ -38,18 +48,25 @@ rt{
   text-align:center;
   font-weight:400;
 }
-
 img{
   max-width:100%;
   height:auto;
   display:block;
 }
-
+button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+}
 
 
 /* -- HEADER ------------------ */
 
-aside{
+/* -- global-aside -- */
+.global-aside{
   position: absolute;
   right: 0;
   z-index: 2;
@@ -61,10 +78,8 @@ aside{
   box-sizing: border-box;
   padding: 10px 0 20px 0;
   width: fit-content;
-  /* box-shadow: -4px 0 13px 0 rgb(0 0 0 / 4%); */
-  /* border-left: 2px solid rgba(255, 255, 255, 0.12);  */
 }
-aside a {
+.global-aside a {
   font-size: 5rem;
   font-weight: 900;
   color: rgba(0, 0, 0, 0.1);
@@ -78,15 +93,14 @@ aside a {
   align-items: center;
   justify-content: flex-start;
   text-decoration: none;
-  transition: font-size 0.1s, width 0.1s, color 0.1s;
+  transition: color 0.3s;
 }
-aside a:hover {
-  font-size: 9rem;
-  width: 7.5rem;
-  color: rgba(0, 0, 0, 0.2);
+.global-aside a:hover {
+  color: rgba(0, 0, 0, 0.4);
 }
 
 
+/* -- global-header -- */
 .global-header{
   position: absolute;
   left: 0;
@@ -98,26 +112,9 @@ aside a:hover {
   align-items: flex-start;
   box-sizing: border-box;
   padding: 10px 0 20px 10px;
-  /* box-shadow: -4px 0 13px 0 rgb(0 0 0 / 4%); */
-  /* border-right: 2px solid rgba(255, 255, 255, 0.12); */
 }
-/* .global-header:before {
-  content: 'NicoNoClaste';
-  font-size: 9rem;
-  font-weight: 900;
-  color: rgba(255, 255, 255, 0.15);
-  color: rgba(0, 0, 0, 0.1);
-  writing-mode: tb-rl;
-  text-orientation: unset;
-  position: sticky;
-  left: 39px;
-  top: 5px;
-  width: 0px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  pointer-events: none;
-} */
+
+/* -- global-nav -- */
 .global-nav{
   display: block;
   position: sticky;
@@ -150,6 +147,7 @@ aside a:hover {
   opacity: 0.2;
 }
 .global-nav ul li a,
+.global-nav ul li button,
 .global-nav ul li span{
   text-decoration: none;
   color: #fff;
@@ -160,11 +158,24 @@ aside a:hover {
   margin: 2px 0;
   text-transform: capitalize;
 }
+html[lang="ja"] .global-nav ul li a,
+html[lang="ja"] .global-nav ul li span{
+  font-weight: 400;
+  letter-spacing:-3px;
+}
+html[lang="en"] .global-nav ul li button{
+  font-weight: 400; 
+}
+.global-nav ul li:focus-within,
 .global-nav ul li:hover{
   transform:scale(2);
   text-shadow:0 0 3px;
   opacity:1;
   z-index:2;
+
+}
+.global-nav ul li a:focus{
+  outline:none;
 }
 .global-nav ul li.is-active{
   opacity:1;
@@ -202,7 +213,8 @@ aside a:hover {
   color:#fff;
 }
 
-/* -- HERO ------------------ */
+
+/* -- TOP HERO ------------------ */
 .hero{
   width:100%;
   height:100vh;
@@ -261,6 +273,7 @@ aside a:hover {
   position:relative;
 }
 
+
 .top-bloc{
   text-align: center;
   min-height:100vh;
@@ -298,11 +311,20 @@ aside a:hover {
   align-items: center;
   justify-content: center;
 }
+html[lang="ja"] .top-bloc > h2{
+  font-weight: 700;
+  letter-spacing:-3px;
+}
+
+
 .top-bloc > h2 rt{
   font-weight:400;
   font-size:30%;
   letter-spacing:-0.2rem;
 }
+
+
+
 .top-bloc .desc > p{
   font-weight: 900;
   margin-bottom: 0;
@@ -312,6 +334,11 @@ aside a:hover {
   line-height: 2.3;
   letter-spacing: 0.05rem;
 }
+html[lang="ja"] .top-bloc .desc > p{
+  font-weight: 700;
+}
+
+
 .top-bloc .desc > p strong{
   color: #f9d600;
   font-weight: inherit;

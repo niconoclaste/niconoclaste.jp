@@ -20,11 +20,9 @@
 
 <script>
   import Header from '/src/components/Header.svelte';
-  import Footer from '/src/components/Footer.svelte';
-
   export let posts;
-  export let articles = posts.filter(post => post.category === 'articles');
-  export let aboutPosts = posts.filter(post => post.category === 'about');
+  export let articles = posts.filter(post => post.top && post.category === 'articles' && !post.hidden);
+  // export let aboutPosts = posts.filter(post => post.category === 'about');
 </script>
 
 
@@ -38,27 +36,34 @@
   <Header current="home" />
 
   <section class="top-bloc" id="about">
-    <h2><ruby>About<rt>について</rt></ruby></h2>
+    <h2><span lang="en">About</span><span lang="ja">について</span></h2>
     <div class="desc">
-      <p><strong><ruby>Nicolas<rt>二コラ</rt></ruby></strong> (NicoNoClaste)</p>
-      <p>made in <strong>Paris</strong> living in <strong>Tokyo</strong></p>
-      <p>10+ years <strong>Web Developer</strong></p>
-      <p>HTML <strong>CSS</strong> JS <strong>Svelte</strong> SCSS <strong>Vue.js</strong> TypeScript</p>
-      <p><strong>Node.js</strong> GraphQL <strong>Ionic</strong> Wordpress <strong>PHP</strong> ...</p>
-      <p><strong>〈　</strong>A man <strong>MUST</strong> have a <strong>CODE</strong><strong>　〉</strong></p>
+      <p lang="en"><strong>Nicolas</strong> (NicoNoClaste)</p>
+      <p lang="ja"><strong>二コラ</strong> (ニコのクラスト)</p>
 
+      <p lang="en">born in <strong>Paris</strong> living in <strong>Tokyo</strong></p>
+      <p lang="ja"><strong>パリ</strong>生まれ <strong>東京</strong>在住</p>
+
+      <p lang="en">10+ years <strong>Web Developer</strong></p>
+      <p lang="ja">10年+ <strong>ウェブデベロッパー</strong></p>
+
+      <p>HTML <strong>CSS</strong> Sass <strong>JS</strong> TypeScript <strong>Svelte</strong> Vue.js</p>
+      <p><strong>Node.js</strong> GraphQL <strong>Ionic</strong> Wordpress <strong>PHP</strong>...</p>
+      <!-- <p><strong>〈　</strong>A man <strong>MUST</strong> have a <strong>CODE</strong><strong>　〉</strong></p> -->
+<!-- 
       <p>
         {#each aboutPosts as post}
         <a href="{post.url}"><strong>{post.title}</strong></a><br>
         {/each}
       </p>
+-->
 
-      <p><a href="/about"><strong>SEE MORE</strong></a></p>
+      <p>→ <a href="/about"><strong lang="en">READ MORE</strong><strong lang="ja">もっと見る</strong></a> ←</p>
     </div>
   </section>
 
   <section class="top-bloc" id="codes">
-    <h2><ruby>Codes<rt>コード</rt></ruby></h2>
+    <h2><span lang="en">Codes</span><span lang="ja">コード</span></h2>
     <div class="desc">
       <div style="width:100%;max-width:1000px;margin-bottom:40px">
         <iframe height="650" style="width: 100%;" scrolling="no" title="CSS only slider with controls and navigation" src="https://codepen.io/niconoclaste/embed/NWgvaOa?default-tab=" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
@@ -75,21 +80,19 @@
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
-      <p><a href="/codes"><strong>SEE MORE</strong></a></p>
+      <p>→ <a href="/codes"><strong lang="en">READ MORE</strong><strong lang="ja">もっと見る</strong></a> ←</p>
     </div>
   </section>
 
   <section class="top-bloc" id="articles">
-    <h2><ruby>Articles<rt>ライティングス</rt></ruby></h2>
+    <h2><span lang="en">Articles</span><span lang="ja">ライティングス</span></h2>
     <div class="desc">
       <p>
       {#each articles as post}
       <a href="{post.url}"><strong>{post.title}</strong></a><br>
       {/each}
       </p>
-      <p><a href="/articles"><strong>SEE MORE</strong></a></p>
+      <p>→ <a href="/articles"><strong lang="en">READ MORE</strong><strong lang="ja">もっと見る</strong></a> ←</p>
     </div>
   </section>
 </section>
-
-<Footer />

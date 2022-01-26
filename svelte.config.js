@@ -1,7 +1,7 @@
 import preprocess from 'svelte-preprocess';
 import adapter from '@sveltejs/adapter-static';
 import { mdsvex } from 'mdsvex';
-const extensions = ['.svelte', '.md'];
+const extensions = ['.svelte'];
 
 const config = {
 	preprocess: [

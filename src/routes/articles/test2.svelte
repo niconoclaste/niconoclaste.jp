@@ -5,7 +5,8 @@ date: 2022-01-18
 excerpt: "A quick test2 post."
 tags: [TEST, TEST2]
 category: articles
-#hidden
+top: true
+hidden
 ---
 
 <h2>TEST2</h2>
