@@ -1,7 +1,7 @@
 
 <script>
-  import Header from '/src/components/Header.svelte';
-  import Footer from '/src/components/Footer.svelte';
+  import Header from '$lib/components/Header.svelte';
+  import Footer from '$lib/components/Footer.svelte';
   import { page } from '$app/stores';
   import { title } from "$lib/store.js";
   const pagePath = $page.url.pathname;
@@ -36,9 +36,8 @@
     title.set(pageTitle);
   }
 
-
-console.log({layout});
-console.log({category});
+  console.log('category : '+category);
+  console.log('layout : '+layout);
 
 </script>
 

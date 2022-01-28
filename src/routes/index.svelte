@@ -1,13 +1,11 @@
 <script context="module">
-  export const load = async({ fetch }) => {
+	export async function load({ fetch }) {
 		const url = '/api/posts.json';
 		const res = await fetch(url);
 		if (res.ok) {
-      let posts = await res.json();
-      posts = posts;
 			return {
 				props: {
-					posts : posts 
+					posts: await res.json()
 				}
 			};
 		}
@@ -15,14 +13,11 @@
 			status: res.status,
 			error: new Error(`Could not load ${url}`)
 		};
-  }
+	}
+  import Header from '$lib/components/Header.svelte';
 </script>
-
 <script>
-  import Header from '/src/components/Header.svelte';
   export let posts;
-  export let articles = posts.filter(post => post.top && post.category === 'articles' && !post.hidden);
-  // export let aboutPosts = posts.filter(post => post.category === 'about');
 </script>
 
 
@@ -50,13 +45,6 @@
       <p>HTML <strong>CSS</strong> Sass <strong>JS</strong> TypeScript <strong>Svelte</strong> Vue.js</p>
       <p><strong>Node.js</strong> GraphQL <strong>Ionic</strong> Wordpress <strong>PHP</strong>...</p>
       <!-- <p><strong>〈　</strong>A man <strong>MUST</strong> have a <strong>CODE</strong><strong>　〉</strong></p> -->
-<!-- 
-      <p>
-        {#each aboutPosts as post}
-        <a href="{post.url}"><strong>{post.title}</strong></a><br>
-        {/each}
-      </p>
--->
 
       <p>→ <a href="/about"><strong lang="en">READ MORE</strong><strong lang="ja">もっと見る</strong></a> ←</p>
     </div>
@@ -80,7 +68,7 @@
           on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
-      <p>→ <a href="/codes"><strong lang="en">READ MORE</strong><strong lang="ja">もっと見る</strong></a> ←</p>
+      <!-- <p>→ <a href="/codes"><strong lang="en">READ MORE</strong><strong lang="ja">もっと見る</strong></a> ←</p> -->
     </div>
   </section>
 
@@ -88,8 +76,25 @@
     <h2><span lang="en">Articles</span><span lang="ja">ライティングス</span></h2>
     <div class="desc">
       <p>
-      {#each articles as post}
-      <a href="{post.url}"><strong>{post.title}</strong></a><br>
+      {#each posts as post}
+      {#if post.category === 'articles' && post.top}
+      <a href="{post.url}">
+        <strong lang="en">
+        {post.title}<br>
+        <small>
+          {new Intl.DateTimeFormat('ja-JP', {dateStyle: 'short'}).format(new Date(post.date))}<br>
+          {post.excerpt}
+        </small>
+      </strong>
+      <strong lang="ja">
+        {post.titleJa}<br>
+        <small>
+          {new Intl.DateTimeFormat('ja-JP', {dateStyle: 'long'}).format(new Date(post.date))}<br>
+          {post.excerptJa}
+        </small>
+      </strong>
+      </a><br><br>
+      {/if}
       {/each}
       </p>
       <p>→ <a href="/articles"><strong lang="en">READ MORE</strong><strong lang="ja">もっと見る</strong></a> ←</p>

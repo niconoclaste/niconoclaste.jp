@@ -17,6 +17,9 @@ const config = {
 		// hydrate the target element in src/app.html
 		target: 'body',
 		adapter: adapter(),
+    prerender: {
+      enabled: false
+    },
 		router: false
 	},
 };

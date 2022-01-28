@@ -1,9 +1,11 @@
 <script>
+  // import { language } from '$lib/store.js';
   export let current;
 </script>
 
 <nav class="global-nav">
   <ul>
+    <!-- <li>{$language}</li> -->
     <li class={current === 'home' ? "is-active" : ''}>
     {#if current === 'home'}
       <a href="/#"><span lang="en">Home</span><span lang="ja">ホーム</span></a>
@@ -46,13 +48,10 @@
       </ul> -->
     </li>
     <li>
+      <!-- <button type="button" class="js-switch-lang" lang="ja" on:click={() => { language.set('ja'); }}>日本語</button> -->
+      <!-- <button type="button" class="js-switch-lang" lang="en" on:click={() => { language.set('en'); }}>English</button> -->
       <button type="button" class="js-switch-lang" lang="ja">日本語</button>
       <button type="button" class="js-switch-lang" lang="en">English</button>
-      <!-- <ul>
-        <li><a href="https://twitter.com/NicoloNoClaste/" target="_blank" rel="noreferrer">twitter</a></li>
-        <li><a href="https://codepen.io/niconoclaste/" target="_blank" rel="noreferrer">codepen</a></li>
-        <li><a href="https://github.com/niconoclaste" target="_blank" rel="noreferrer">github</a></li>
-      </ul> -->
     </li>
   </ul>
 </nav>

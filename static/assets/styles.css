@@ -218,8 +218,8 @@ html[lang="en"] .global-nav ul li button{
 .hero{
   width:100%;
   height:100vh;
-  background-image:url(/img/hero.webp);
-  background-image:url(/img/fullwidth.webp);
+  background-image:url(/assets/img/hero.webp);
+  background-image:url(/assets/img/fullwidth.webp);
   background-position:center center;
   background-repeat:no-repeat;
   background-size:cover;
@@ -346,6 +346,10 @@ html[lang="ja"] .top-bloc .desc > p{
   line-height:1;
   font-size: 125%;
 }
+.top-bloc .desc > p strong small{
+  font-weight: 400;
+  font-size: 80%;
+}
 
 /* top about section */
 #about{
@@ -387,4 +391,21 @@ html[lang="ja"] .top-bloc .desc > p{
 
 .global-footer p{
   color:#fff;
+}
+
+
+
+ul{
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+ul li{
+  margin-bottom:15px;
+}
+ul li a{
+  color:black;
+}
+hr{
+  width:100%;
 }

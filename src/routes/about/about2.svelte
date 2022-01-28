@@ -10,4 +10,4 @@ category: about
 <h2>ABOUT ME2</h2>
 <p>lets talk about me2 !</p>
 <p>yeah2 !</p>
-<img src="/img/tests/herbie_hancock.jpg" width="600" alt="herbie">
+<img src="/assets/img/tests/herbie_hancock.jpg" width="600" alt="herbie">

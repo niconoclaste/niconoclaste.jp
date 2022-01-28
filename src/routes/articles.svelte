@@ -1,14 +1,11 @@
 <script context="module">
-  export const load = async({ fetch }) => {
+	export async function load({ fetch }) {
 		const url = '/api/posts.json';
 		const res = await fetch(url);
-    
 		if (res.ok) {
-      let posts = await res.json();
-      posts = posts.filter(post => post.category === 'articles' && !post.hidden);
 			return {
 				props: {
-					posts : posts 
+					posts: await res.json()
 				}
 			};
 		}
@@ -16,14 +13,14 @@
 			status: res.status,
 			error: new Error(`Could not load ${url}`)
 		};
-  }
+	}
 </script>
-
 <script>
-  import Postcard from '/src/components/Post-card.svelte';
+  import Postcard from '$lib/components/Post-card.svelte';
   export let posts;
 </script>
 
-      <p>ARTICLES !!!</p>
+<p lang="en">ARTICLES !!!</p>
+<p lang="ja">ライティングス !!!</p>
 
-<Postcard {posts} />
+<Postcard posts={ posts.filter(post => (post.category === 'articles'))} />

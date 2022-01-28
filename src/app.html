@@ -5,28 +5,21 @@
     <link rel="icon" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="NicoNoClaste | WEB DEVELOPER | ウェブデベロッパー">
-    <link href="/global.css" rel="stylesheet">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="black">
-	  %svelte.head%
+    <meta name="description" content="NicoNoClaste WEB DEVELOPER ウェブデベロッパー">
+    <meta name="keywords" content="NicoNoClaste, WEB DEVELOPER, ウェブデベロッパー">
+    <link href="/assets/styles.css" rel="stylesheet">
     <script>
       let selectedLang = localStorage.getItem('lang');
       if(selectedLang){
         document.documentElement.setAttribute('lang', selectedLang);
       }
     </script>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="black">
+	  %svelte.head%
 	</head>
 	<body>
 		%svelte.body%
+    <script src="/assets/scripts.js"></script>
 	</body>
-  <script>
-    document.querySelectorAll('.js-switch-lang').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        let selectedLang = btn.getAttribute('lang');
-        document.documentElement.setAttribute('lang', selectedLang);
-        localStorage.setItem('lang', selectedLang);
-      });
-    });
-  </script>
 </html>
