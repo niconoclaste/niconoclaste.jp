@@ -4,10 +4,10 @@ function createTitle() {
 	return {
 		subscribe,
 		set: (value) => {
-			set(`${value} | NicoNoClaste Web developer`)
+			set(`${value} | NicoNoClaste Web developer / ウェブデベロッパー`)
 		},
 		clear: () => {
-			set('NicoNoClaste Web developer');
+			set('NicoNoClaste Web developer / ウェブデベロッパー');
 		}
 	}
 }

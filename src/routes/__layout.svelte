@@ -1,5 +1,5 @@
-
 <script>
+  import '/static/assets/styles.css';
   import Header from '$lib/components/Header.svelte';
   import Footer from '$lib/components/Footer.svelte';
   import { page } from '$app/stores';
@@ -9,7 +9,6 @@
   const pathLength = pathParts.length - 1;
   let layout = '';
   let category = pathParts[1];
-
   if(pagePath === '/'){
     layout = 'home';
     category = 'home';
@@ -35,7 +34,7 @@
     }
     title.set(pageTitle);
   }
-
+  
   console.log('category : '+category);
   console.log('layout : '+layout);
 

@@ -16,11 +16,13 @@ const config = {
 	kit: {
 		// hydrate the target element in src/app.html
 		target: 'body',
-		adapter: adapter(),
+		// adapter: adapter(),
     prerender: {
       enabled: false
     },
-		router: false
+    browser: {
+      router: false
+    }
 	},
 };
 

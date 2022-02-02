@@ -13,11 +13,6 @@ top: true
 #hidden
 ---
 
-
-<script>
-  console.log('hey !');
-</script>
-
   <h2>TEST ME</h2>
   <p>lets TEST me !</p>
   <p>yeah !</p>
