@@ -3,10 +3,10 @@
   export let current;
 </script>
 
-<header class="global-header">
+<header class="g-header">
   <Nav current={current} />
 </header>
-<aside class="global-aside">
+<aside class="g-aside">
 {#if current === 'home'}
   <a href="/#">NicoNoClaste</a>
 {:else}

@@ -1,7 +1,7 @@
 {
-  "name": "niconoclaste",
+  "name": "niconoclaste.jp",
   "version": "3.0.0",
-  "description": "Renewal of my personal homepage",
+  "description": "Renewal of my personal homepage (2022)",
   "repository": {
     "type": "git",
     "url": "https://github.com/niconoclaste/niconoclaste.jp.git"
@@ -20,16 +20,16 @@
     "lint": "eslint --ignore-path .gitignore ."
   },
   "devDependencies": {
-    "@sveltejs/adapter-static": "^1.0.0-next.21",
+    "@sveltejs/adapter-static": "^1.0.0-next.29",
     "@sveltejs/kit": "next",
     "eslint": "^7.32.0",
-    "eslint-plugin-svelte3": "^3.2.1",
-    "svelte": "^3.42.6",
-    "svelte-body": "^1.1.3",
-    "svelte-preprocess": "^4.7.4",
-    "vite": "^2.0.0",
+    "eslint-plugin-svelte3": "^3.4.1",
     "mdsvex": "^0.9.8",
-    "vite-plugin-pwa": "^0.11.5"
+    "svelte": "^3.47.0",
+    "svelte-body": "^1.3.6",
+    "svelte-preprocess": "^4.10.6",
+    "vite": "^2.9.6",
+    "vite-plugin-pwa": "^0.11.13"
   },
   "type": "module"
 }

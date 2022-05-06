@@ -16,14 +16,9 @@
 	}
 </script>
 
-
 <script>
-  import Postcard from '$lib/components/Post-card.svelte';
+  import PostsList from '$lib/components/Posts.svelte';
   export let posts;
 </script>
 
-<p lang="en">ABOUT !!!</p>
-<p lang="ja">について !!!</p>
-
-
-<Postcard posts={ posts.filter(post => (post.category === 'about'))} />
+<PostsList display="html" posts={ posts.filter(post => (post.category === 'about'))} />

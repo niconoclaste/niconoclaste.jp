@@ -1,57 +1,52 @@
 <script>
-  // import { language } from '$lib/store.js';
   export let current;
+  import translation from '$lib/translation.json';
+  import language from '$lib/store.js';
+  $: lang = $language;
 </script>
 
-<nav class="global-nav">
+<nav class="g-navigation">
   <ul>
-    <!-- <li>{$language}</li> -->
     <li class={current === 'home' ? "is-active" : ''}>
-    {#if current === 'home'}
-      <a href="/#"><span lang="en">Home</span><span lang="ja">ホーム</span></a>
-    {:else}
-      <a href="/"><span lang="en">Home</span><span lang="ja">ホーム</span></a>
-    {/if}
+      <a href="{current === 'home' ? '/#' : '/'}">
+        <span lang="{lang}">{translation.home.title[lang]}</span>
+      </a>
     </li>
-
-
     <li class={current === 'about' ? "is-active" : ''}>
-    {#if current === 'home'}
-      <a href="/#about"><span lang="en">About</span><span lang="ja">について</span></a>
-    {:else}
-      <a href="/about"><span lang="en">About</span><span lang="ja">について</span></a>
-    {/if}
+      <a href="{current === 'home' ? '/#about' : '/about'}">
+        <span lang="{lang}">{translation.about.title[lang]}</span>
+      </a>
     </li>
-
-    <li><a href="/#codes"><span lang="en">Codes</span><span lang="ja">コード</span></a></li>
-    <!-- <li class={current === 'codes' ? "is-active" : ''}>
-    {#if current === 'home'}
-      <a href="/#codes">Codes</a>
-    {:else}
-      <a href="/codes">Codes</a>
-    {/if} -->
-
+    <li class={current === 'codes' ? "is-active" : ''}>
+      <a href="{current === 'home' ? '/#codes' : '/#codes'}">
+        <span lang="{lang}">{translation.codes.title[lang]}</span>
+      </a>
+    </li>
     <li class={current === 'articles' ? "is-active" : ''}>
-    {#if current === 'home'}
-      <a href="/#articles"><span lang="en">Articles</span><span lang="ja">ライティングス</span></a>
-    {:else}
-      <a href="/articles"><span lang="en">Articles</span><span lang="ja">ライティングス</span></a>
-    {/if}
+      <a href="{current === 'home' ? '/#articles' : '/articles'}">
+        <span lang="{lang}">{translation.articles.title[lang]}</span>
+      </a>
     </li>
-
     <li>
-      <a href="mailto:test@test.com"><span lang="en">Contact</span><span lang="ja">コンタクト</span></a>
+      <a href="mailto:test@test.com">
+        <span lang="{lang}">{translation.contact.title[lang]}</span>
+      </a>
       <!-- <ul>
+        <li><a href="mailto:test@test.com">e-mail</a></li>
         <li><a href="https://twitter.com/NicoloNoClaste/" target="_blank" rel="noreferrer">twitter</a></li>
         <li><a href="https://codepen.io/niconoclaste/" target="_blank" rel="noreferrer">codepen</a></li>
         <li><a href="https://github.com/niconoclaste" target="_blank" rel="noreferrer">github</a></li>
       </ul> -->
     </li>
     <li>
-      <!-- <button type="button" class="js-switch-lang" lang="ja" on:click={() => { language.set('ja'); }}>日本語</button> -->
-      <!-- <button type="button" class="js-switch-lang" lang="en" on:click={() => { language.set('en'); }}>English</button> -->
-      <button type="button" class="js-switch-lang" lang="ja">日本語</button>
-      <button type="button" class="js-switch-lang" lang="en">English</button>
+      <!-- <button type="button" on:click="{() => changeLang('ja')}" lang="ja">日本語</button>
+      <button type="button" on:click="{() => changeLang('en')}" lang="en">English</button> -->
+
+      {#if lang == 'en'}
+      <button type="button" lang="ja" on:click={()=>(language.set('ja'))}>日本語</button>
+      {:else}
+      <button type="button" lang="en" on:click={()=>(language.set('en'))}>English</button>
+      {/if}
     </li>
   </ul>
 </nav>

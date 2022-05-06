@@ -1,22 +1,17 @@
 ---
 slug: test
 title: test
-titleJa: テスト
+title_ja: テスト
 date: 2022-01-17
 excerpt: "A quick test post."
-excerptJa: "テストポストだよー"
+excerpt_ja: "テストポストだよー"
 tags: [TEST]
-tagsJa: [テスト]
+tags_ja: [テスト]
 category: articles
-categoryJa: ライティング
+category_ja: ライティング
 top: true
 #hidden
 ---
-
-
-<script>
-  console.log('hey !');
-</script>
 
   <h2>TEST ME</h2>
   <p>lets TEST me !</p>

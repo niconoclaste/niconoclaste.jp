@@ -4,24 +4,26 @@ import { mdsvex } from 'mdsvex';
 const extensions = ['.svelte'];
 
 const config = {
-	preprocess: [
-		preprocess({
+  preprocess: [
+    preprocess({
       preserve: ['module']
     }),
-		mdsvex({
-			extensions: extensions,
-		})
-	],
-	extensions: extensions,
-	kit: {
-		// hydrate the target element in src/app.html
-		target: 'body',
-		adapter: adapter(),
+    mdsvex({
+      extensions: extensions,
+    })
+  ],
+  extensions: extensions,
+  kit: {
+    // hydrate the target element in src/app.html
+    // target: 'body',
+    adapter: adapter(),
     prerender: {
       enabled: false
     },
-		router: false
-	},
+    browser: {
+      router: false
+	  }
+  },
 };
 
 export default config;

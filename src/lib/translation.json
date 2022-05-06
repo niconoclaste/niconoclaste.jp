@@ -1,0 +1,53 @@
+{
+  "home": {
+    "title": {
+      "en": "home",
+      "ja": "ホーム"
+    },
+    "more": {
+      "en": "",
+      "ja": ""
+    }
+  },
+  "about": {
+    "title": {
+      "en": "about",
+      "ja": "について"
+    },
+    "more": {
+      "en": "want to know more ?",
+      "ja": "もっと知りたい？"
+    }
+  },
+  "codes": {
+    "title": {
+      "en": "codes",
+      "ja": "コード"
+    },
+    "more": {
+      "en": "all my codepens",
+      "ja": "すべてのコードペン"
+    }
+  },
+  "articles": {
+    "title": {
+      "en": "articles",
+      "ja": "ライティング"
+    },
+    "more": {
+      "en": "old articles are here",
+      "ja": "古い記事はこどです"
+    }
+  },
+  "contact": {
+    "title": {
+      "en": "contact",
+      "ja": "コンタクト"
+    },
+    "more": {
+      "en": "",
+      "ja": ""
+    }
+  }
+
+}

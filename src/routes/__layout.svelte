@@ -3,7 +3,10 @@
   import Header from '$lib/components/Header.svelte';
   import Footer from '$lib/components/Footer.svelte';
   import { page } from '$app/stores';
-  import { title } from "$lib/store.js";
+  import { title } from '$lib/store.js';
+  import translation from '$lib/translation.json';
+  import language from '$lib/store.js';
+  $: lang = $language;
   const pagePath = $page.url.pathname;
   const pathParts = pagePath.split('/');
   const pathLength = pathParts.length - 1;
@@ -35,20 +38,52 @@
     }
     title.set(pageTitle);
   }
-
-  console.log('category : '+category);
-  console.log('layout : '+layout);
-
 </script>
 
 <svelte:head>
 	<title>{$title}</title>
 </svelte:head>
 
-
 {#if layout === 'home'}
+
 <slot></slot>
+
 <Footer/>
+
+{:else}
+
+<main class="g-contents">
+  <Header current={category} />
+  <article class="l-article" id="{category}">
+    <header class="m-header">
+      <h1 class="m-title">
+        <span lang="{lang}">{translation[category].title[lang]}</span>
+      </h1>
+    </header>
+
+    <section class="l-section">
+      <slot></slot>
+    </section>
+
+    <footer class="m-footer">
+      <p>→ <a href="/{category}">
+        <strong lang="{lang}">
+          {#if lang == 'en'}
+          Go back to category
+          {:else}
+          一蘭へもどる
+          {/if}
+        </strong>
+      </a> ←</p>
+    </footer>
+  </article>
+  <Footer/>
+</main>
+
+{/if}
+
+<!-- 
+
 {:else if layout === 'inside'}
 <section class="contents">
   <Header current={category} />
@@ -59,7 +94,9 @@
   </section>
   <Footer/>
 </section>
+
 {:else if layout === 'post'}
+
 <section class="contents">
   <Header current={category} />
   <section class="top-bloc">
@@ -68,7 +105,11 @@
     </div>
   </section>
   <Footer/>
+
 </section>
+
 {:else}
+
 <slot></slot>
-{/if}
+
+{/if} -->
