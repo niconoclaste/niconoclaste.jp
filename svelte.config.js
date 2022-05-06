@@ -22,7 +22,7 @@ const config = {
     },
     browser: {
       router: false
-	  }
+    }
   },
 };
 

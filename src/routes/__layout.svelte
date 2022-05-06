@@ -1,4 +1,3 @@
-
 <script>
   import Header from '$lib/components/Header.svelte';
   import Footer from '$lib/components/Footer.svelte';
@@ -41,7 +40,7 @@
 </script>
 
 <svelte:head>
-	<title>{$title}</title>
+  <title>{$title}</title>
 </svelte:head>
 
 {#if layout === 'home'}
