@@ -25,4 +25,5 @@ posts.filter((post) => !post.hidden)
   )
 const articles = posts.filter(post => post.category === 'articles');
 const abouts = posts.filter(post => post.category === 'about');
-export { posts, articles, abouts };
+const works = posts.filter(post => post.category === 'works');
+export { posts, articles, abouts, works };

@@ -15,10 +15,13 @@
     };
   }
 </script>
+
 <script>
   // import Bebop from '$lib/components/Bebop.svelte';
   import Header from '$lib/components/Header.svelte';
   import translation from '$lib/translation.json';
+  import PostsList from '$lib/components/Posts.svelte';
+  import CodeSnippet from '$lib/components/Snippet.svelte';
   import language from '$lib/store.js';
   $: lang = $language;
   export let posts;
@@ -66,6 +69,28 @@
     </footer>
   </article>
 
+
+
+  <article class="l-article" id="works">
+    <header class="m-header">
+      <h2 class="m-title">
+        <span lang="{lang}">{translation.works.title[lang]}</span>
+      </h2>
+    </header>
+
+    <section class="l-section">
+      <PostsList display="list" posts={ posts.filter(post => (post.category === 'works'))} />
+    </section>
+
+    <footer class="m-footer">
+      <p>→ <a href="/works">
+        <strong lang="{lang}">{translation.works.more[lang]}</strong>
+      </a> ←</p>
+    </footer>
+
+  </article>
+
+
   <article class="l-article" id="codes">
     <header class="m-header">
       <h2 class="m-title">
@@ -73,81 +98,21 @@
       </h2>
     </header>
     <section class="l-section">
-      <div class="m-bloc">
-        <h3 class="m-title">
-          {#if lang == 'en'}
-          <span lang="en">CSS only responsive slider</span>
-          {:else}
-          <span lang="ja">CSSのみ レスポンシブ カルーセル</span>
-          {/if}
-        </h3>
-        <div class="pen-block">
-          <iframe height="380" style="width: 100%;" scrolling="no" title="CSS only slider with controls and navigation" src="https://codepen.io/niconoclaste/embed/NWgvaOa?default-tab=" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-            See the Pen <a href="https://codepen.io/niconoclaste/pen/NWgvaOa">
-            CSS only slider with controls and navigation</a> by ニコ (<a href="https://codepen.io/niconoclaste">@niconoclaste</a>)
-            on <a href="https://codepen.io">CodePen</a>.
-          </iframe>
-        </div>
-      </div>
 
-      <div class="m-bloc">
-        <h3 class="m-title">
-          {#if lang == 'en'}
-          <span lang="en">CSS only hamburger navigation</span>
-          {:else}
-          <span lang="ja">CSSのみ ハンバーガー ナビ</span>
-          {/if}
-        </h3>
-        <div class="pen-block">
-          <iframe height="380" style="width: 100%;" scrolling="no" title="CSS only hamburger navigation" src="https://codepen.io/niconoclaste/embed/abwyYRN?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-            See the Pen <a href="https://codepen.io/niconoclaste/pen/abwyYRN">
-            CSS only hamburger navigation</a> by ニコ (<a href="https://codepen.io/niconoclaste">@niconoclaste</a>)
-            on <a href="https://codepen.io">CodePen</a>.
-          </iframe>
-        </div>
-      </div>
+      <CodeSnippet id="NWgvaOa" title="CSS only responsive slider" title_ja="CSSのみ レスポンシブ カルーセル" />
 
-      <div class="m-bloc">
-        <h3 class="m-title">
-          {#if lang == 'en'}
-          <span lang="en">Responsive svg progress circle</span>
-          {:else}
-          <span lang="ja">レスポンシブSVG進行サークル</span>
-          {/if}
-        </h3>
+      <CodeSnippet id="abwyYRN" title="CSS only hamburger navigation" title_ja="CSSのみ ハンバーガー ナビ" />
 
-        <div class="pen-block">
-          <iframe height="380" style="width: 100%;" scrolling="no" title="Responsive svg progress circle " src="https://codepen.io/niconoclaste/embed/ExbKxPx?default-tab=" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-            See the Pen <a href="https://codepen.io/niconoclaste/pen/ExbKxPx">
-            Responsive svg progress circle </a> by ニコ (<a href="https://codepen.io/niconoclaste">@niconoclaste</a>)
-            on <a href="https://codepen.io">CodePen</a>.
-          </iframe>
-        </div>
-      </div>
+      <CodeSnippet id="ExbKxPx" title="Responsive svg progress circle" title_ja="レスポンシブSVG進行サークル" />
 
-      <div class="m-bloc">
-        <h3 class="m-title">
-          {#if lang == 'en'}
-          <span lang="en">CSS only auto slide with reversed panels</span>
-          {:else}
-          <span lang="ja">レスポンシブSVG進行サークル</span>
-          {/if}
-        </h3>
-
-        <div class="pen-block">
-          <iframe height="380" style="width: 100%;" scrolling="no" title="CSS only auto slide with reversed panels" src="https://codepen.io/niconoclaste/embed/qBqjqrV?default-tab=" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-            See the Pen <a href="https://codepen.io/niconoclaste/pen/qBqjqrV">
-              CSS only auto slide with reversed panels</a> by ニコ (<a href="https://codepen.io/niconoclaste">@niconoclaste</a>)
-            on <a href="https://codepen.io">CodePen</a>.
-          </iframe>
-        </div>
-      </div>
+      <!-- <CodeSnippet id="qBqjqrV" title="CSS only auto slide with reversed panels" title_ja="CSSのみ リバース縦スライド" /> -->
 
       <footer class="m-footer">
         <p>→ <a href="https://codepen.io/niconoclaste" target="_blank">
           <strong lang="{lang}">{translation.codes.more[lang]}</strong>
         </a> ←</p>
       </footer>
+
     </section>
   </article>
 
@@ -159,36 +124,16 @@
     </header>
 
     <section class="l-section">
-      <p>
-      {#each posts as post}
-      {#if post.category === 'articles' && post.top}
-      <a href="{post.url}" lang="{lang}">
-        {#if lang == 'en'}
-        <strong>
-          {post.title}
-        </strong>
-        <small>
-          {new Intl.DateTimeFormat('ja-JP', {dateStyle: 'short'}).format(new Date(post.date))}<br>
-          {post.excerpt}
-        </small>
-        {:else}
-        <strong>
-          {post.titleJa}<br>
-        </strong>
-        <small>
-          {new Intl.DateTimeFormat('ja-JP', {dateStyle: 'long'}).format(new Date(post.date))}<br>
-          {post.excerptJa}
-        </small>
-        {/if}
-      </a><br><br>
-      {/if}
-      {/each}
-      </p>
+
+      <PostsList display="list" posts={ posts.filter(post => (post.category === 'articles'))} />
+
     </section>
+
     <footer class="m-footer">
       <p>→ <a href="/articles">
         <strong lang="{lang}">{translation.articles.more[lang]}</strong>
       </a> ←</p>
     </footer>
+
   </article>
 </main>

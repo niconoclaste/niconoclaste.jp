@@ -1,5 +1,9 @@
 <script>
-
+  let audio;
+  function playVideo(){
+    audio.volume = 0.2;
+    audio.paused ? audio.play() : audio.pause();
+  }
 </script>
 
 <section class="l-hero animation">
@@ -37,12 +41,13 @@
     </div>
   
   
-    <audio id="player" src="/assets/sounds/tank.mp3"></audio>
-    <button onclick="playVideo()" class="audio-btn">⏯</button>
+    <audio src="/assets/sounds/tank.mp3" bind:this={audio}></audio>
+    <button on:click={playVideo} class="audio-btn">⏯</button>
+    <!-- <button on:click={playVideo()} onclick="playVideo()" class="audio-btn">⏯</button> -->
     <!-- <button onclick="document.getElementById('player').volume += 0.1">Vol +</button>  -->
     <!-- <button onclick="document.getElementById('player').volume -= 0.1">Vol -</button>  -->
 
-    <iframe style="width:100vw; height:300px" src="https://www.youtube.com/embed/0hfOyOBHIq4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe style="width:100vw; height:500px" src="https://www.youtube.com/embed/0hfOyOBHIq4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
   </section>
   

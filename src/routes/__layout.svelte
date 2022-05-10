@@ -5,12 +5,14 @@
   import { title } from '$lib/store.js';
   import translation from '$lib/translation.json';
   import language from '$lib/store.js';
-  $: lang = $language;
   const pagePath = $page.url.pathname;
+  // console.log(pagePath);
   const pathParts = pagePath.split('/');
   const pathLength = pathParts.length - 1;
   let layout = '';
   let category = pathParts[1];
+  export let post_title = '';
+  export let post_title_ja = '';
 
   if(pagePath === '/'){
     layout = 'home';
@@ -30,11 +32,14 @@
         if(post.metadata){
           if(post.metadata.slug === pathParts[pathParts.length - 1]){
             postTitle = post.metadata.title;
+            post_title = post.metadata.title;
+            post_title_ja = post.metadata.title_ja;
           }
         }
       }
       pageTitle = postTitle.charAt(0).toUpperCase() + postTitle.slice(1)+' | '+category.charAt(0).toUpperCase() + category.slice(1);
     }
+    
     title.set(pageTitle);
   }
 </script>
@@ -53,24 +58,28 @@
 
 <main class="g-contents">
   <Header current={category} />
+
   <article class="l-article" id="{category}">
     <header class="m-header">
       <h1 class="m-title">
-        <span lang="{lang}">{translation[category].title[lang]}</span>
+        <span lang="{$language}">{post_title}</span>
+        <span lang="{$language}">{post_title_ja}</span>
       </h1>
     </header>
 
     <section class="l-section">
-      <slot></slot>
+      <div class="m-bloc">
+        <slot></slot>
+      </div>
     </section>
 
     <footer class="m-footer">
       <p>→ <a href="/{category}">
-        <strong lang="{lang}">
-          {#if lang == 'en'}
-          Go back to category
+        <strong lang="{$language}">
+          {#if $language == 'en'}
+          Go back to all {translation[category].title['en']}
           {:else}
-          一蘭へもどる
+          {translation[category].title['ja']}一蘭へもどる
           {/if}
         </strong>
       </a> ←</p>

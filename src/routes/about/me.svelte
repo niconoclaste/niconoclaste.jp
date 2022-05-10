@@ -16,8 +16,4 @@ top: false
   <p>僕のことの話をしましょう！</p>
 </div>
 <br>
-<img src="/assets/img/tests/herbie_hancock.jpg" alt="codes" width="400">
-<br>
-<br>
-<br>
-<br>
+<img src="/assets/img/tests/herbie_hancock.jpg" alt="codes" width="400" style="margin:0 auto">

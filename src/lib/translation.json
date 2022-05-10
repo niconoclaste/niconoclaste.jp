@@ -19,6 +19,16 @@
       "ja": "もっと知りたい？"
     }
   },
+  "works": {
+    "title": {
+      "en": "works",
+      "ja": "ワークス"
+    },
+    "more": {
+      "en": "all my works",
+      "ja": "すべてのワークス"
+    }
+  },
   "codes": {
     "title": {
       "en": "codes",

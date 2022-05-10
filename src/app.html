@@ -8,6 +8,17 @@
     <meta name="description" content="NicoNoClaste WEB DEVELOPER ウェブデベロッパー">
     <meta name="keywords" content="NicoNoClaste, WEB DEVELOPER, ウェブデベロッパー">
     <link href="/assets/styles.css" rel="stylesheet">
+    <script>
+      let lang = 'en';
+      lang = window.localStorage.getItem('lang');
+      if(lang === null){
+        lang = window.navigator.userLanguage || window.navigator.language;
+        if(lang !== 'ja'){
+          lang = 'en';
+        }
+      }
+      document.documentElement.setAttribute('lang', lang);
+    </script>
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="black">
     %svelte.head%
