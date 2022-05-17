@@ -1,4 +1,4 @@
-import { posts } from '$lib/posts.js';
+import { posts } from '$lib/postsbody.js';
 export async function get() {
   const body = Object.keys(posts).map((slug) => ({
     slug,

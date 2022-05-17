@@ -3,8 +3,8 @@ slug: article1
 title: first article
 title_ja: 初めての記事
 date: 2022-01-17
-excerpt: "My first article"
-excerpt_ja: "初めての記事"
+excerpt: "This is my very first article !"
+excerpt_ja: "これは僕の最初の記事です！"
 tags: [HTML]
 tags_ja: [HTML]
 category: articles
@@ -15,17 +15,18 @@ top: true
 
 <script>
   // export let post;
-
+  import language from '$lib/store.js';
 
 </script>
+{#if $language == 'en'}
+  <h3 lang="en" class="title">{excerpt}</h3>
+  <p lang="en" class="m-article-date">{new Intl.DateTimeFormat('ja-JP', {dateStyle: 'short'}).format(new Date(date))}</p>
+  
 
-  <h2 lang="en" class="m-title">{title}</h2>
-  <h2 lang="ja" class="m-title">{title_ja}</h2>
+{:else}
+  <h3 lang="ja" class="title">{excerpt_ja}</h3>
+  <p lang="ja" class="m-article-date">{new Intl.DateTimeFormat('ja-JP', {dateStyle: 'long'}).format(new Date(date))}</p>
 
-  <h3 lang="en">{excerpt}</h3>
-  <h3 lang="ja">{title_ja}</h3>
-
-  <p lang="en">{new Intl.DateTimeFormat('ja-JP', {dateStyle: 'short'}).format(new Date(date))}</p>
-  <p lang="ja">{new Intl.DateTimeFormat('ja-JP', {dateStyle: 'long'}).format(new Date(date))}</p>
-
-  <img src="http://www.niconoclaste.jp/img/code.jpg" alt="codes" width="800">
+{/if}
+  <br>
+  <img src="http://www.niconoclaste.jp/img/code.jpg" alt="codes" width="800" class="img">

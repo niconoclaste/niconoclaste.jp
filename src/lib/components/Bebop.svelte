@@ -58,6 +58,10 @@
 
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab+Highlight:wght@400;700');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch');
+@import url('https://fonts.googleapis.com/css2?family=Frijole');
+
 .l-hero.animation{
   background:#333;
   font-size:20px;

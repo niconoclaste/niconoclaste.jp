@@ -17,7 +17,10 @@
 </script>
 <script>
   import PostList from '$lib/components/Posts.svelte';
-  export let posts;
+  // export let posts;
 </script>
-
-<PostList display="list" posts={ posts.filter(post => (post.category === 'articles'))} />
+<!-- {#each posts.filter(post => (post.category === 'articles')) as post}
+<h2>{post.title}</h2>
+{@html post.html}
+{/each} -->
+<PostList display="list" category="articles" />

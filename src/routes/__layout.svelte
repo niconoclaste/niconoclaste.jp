@@ -1,18 +1,26 @@
 <script>
-  import Header from '$lib/components/Header.svelte';
-  import Footer from '$lib/components/Footer.svelte';
+  import { posts } from '$lib/posts.js';
+
+  import { setContext } from 'svelte';
   import { page } from '$app/stores';
   import { title } from '$lib/store.js';
-  import translation from '$lib/translation.json';
   import language from '$lib/store.js';
+
+  import Header from '$lib/components/Header.svelte';
+  import Footer from '$lib/components/Footer.svelte';
+  import translation from '$lib/translation.json';
+
+  setContext('articles', posts);
+
   const pagePath = $page.url.pathname;
-  // console.log(pagePath);
   const pathParts = pagePath.split('/');
   const pathLength = pathParts.length - 1;
   let layout = '';
   let category = pathParts[1];
+
   export let post_title = '';
   export let post_title_ja = '';
+
 
   if(pagePath === '/'){
     layout = 'home';
@@ -21,10 +29,10 @@
   }else{
     let pageTitle;
     if(pathLength === 1){
-      layout = 'inside';
+      layout = 'category';
       pageTitle = category.charAt(0).toUpperCase() + category.slice(1);
     }else{
-      layout = 'post';
+      layout = 'single';
       let postTitle = '';
       const allPosts = import.meta.globEager('./**/*.svelte');
       for (let path in allPosts) {
@@ -51,73 +59,37 @@
 {#if layout === 'home'}
 
 <slot></slot>
-
 <Footer/>
 
 {:else}
-
-<main class="g-contents">
+<main class="g-main">
   <Header current={category} />
 
   <article class="l-article" id="{category}">
     <header class="m-header">
-      <h1 class="m-title">
-        <span lang="{$language}">{post_title}</span>
-        <span lang="{$language}">{post_title_ja}</span>
-      </h1>
+      <h1 class="title">{#if layout === 'category'}<span lang="{$language}">{translation[category].title[$language]}</span>{:else}<span lang="{$language}">{$language == 'en' ? post_title : post_title_ja}</span>{/if}</h1>
     </header>
 
+    {#if category === 'articles'}
     <section class="l-section">
       <div class="m-bloc">
         <slot></slot>
       </div>
     </section>
+    {:else}
+    <slot></slot>
+    {/if}
 
+    {#if layout === 'single'}
     <footer class="m-footer">
-      <p>→ <a href="/{category}">
-        <strong lang="{$language}">
-          {#if $language == 'en'}
-          Go back to all {translation[category].title['en']}
-          {:else}
-          {translation[category].title['ja']}一蘭へもどる
-          {/if}
-        </strong>
-      </a> ←</p>
+      <p><a href="/{category}"><strong lang="{$language}">{#if $language == 'en'}Go back to {translation[category].title['en']} category{:else}{translation[category].title['ja']}の一蘭へもどる{/if}</strong></a></p>
     </footer>
+    {:else}
+    <footer class="m-footer">
+      <p><a href="/#{category}"><strong lang="{$language}">{#if $language == 'en'}Site top{:else}トップページ{/if}</strong></a></p>
+    </footer>
+    {/if}
   </article>
   <Footer/>
 </main>
-
 {/if}
-
-<!-- 
-
-{:else if layout === 'inside'}
-<section class="contents">
-  <Header current={category} />
-  <section class="top-bloc">
-    <div class="desc">
-      <slot></slot>
-    </div>
-  </section>
-  <Footer/>
-</section>
-
-{:else if layout === 'post'}
-
-<section class="contents">
-  <Header current={category} />
-  <section class="top-bloc">
-    <div class="desc">
-      <slot></slot>
-    </div>
-  </section>
-  <Footer/>
-
-</section>
-
-{:else}
-
-<slot></slot>
-
-{/if} -->

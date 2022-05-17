@@ -1,4 +1,10 @@
 {
+  "common": {
+    "nopost": {
+      "en": "no post available in this category right now",
+      "ja": "このカテゴリーには記事がまだないです"
+    }
+  },
   "home": {
     "title": {
       "en": "home",
@@ -45,8 +51,8 @@
       "ja": "ライティング"
     },
     "more": {
-      "en": "old articles are here",
-      "ja": "古い記事はこどです"
+      "en": "all articles",
+      "ja": "すべての記事"
     }
   },
   "contact": {

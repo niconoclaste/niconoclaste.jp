@@ -1,13 +1,15 @@
 import { writable } from 'svelte/store';
+const baseTitle = import.meta.env.VITE_TITLE;
+// const baseTitle = 'NicoNoClaste : Web developer / ウェブデベロッパー';
 function createTitle() {
   const {subscribe, set} = writable('');
   return {
     subscribe,
     set: (value) => {
-      set(`${value} | NicoNoClaste Web developer / ウェブデベロッパー`)
+      set(`${value} | ${baseTitle}`)
     },
     clear: () => {
-      set('NicoNoClaste Web developer / ウェブデベロッパー');
+      set(baseTitle);
     }
   }
 }

@@ -1,4 +1,4 @@
-const imports = import.meta.globEager('/src/routes/articles/*.svelte');
+const imports = import.meta.globEager('/src/routes/**/*.svelte');
 const posts = [];
 for (const path in imports) {
   const post = imports[path];
@@ -10,6 +10,7 @@ for (const path in imports) {
         category,
         url,
         ...post.metadata,
+        ...post.default.render()
       });
     }
   }
