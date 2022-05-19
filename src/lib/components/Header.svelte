@@ -1,11 +1,16 @@
 <script>
   import Nav from '$lib/components/Nav.svelte';
   export let current;
+  export let layout;
   // export let filter;
 </script>
 
 <header class="g-header">
-  <Nav current={current} />
+  <nav class="g-navigation">
+    <div class="g-navigation_container">
+      <Nav current={current} layout={layout} />
+    </div>
+  </nav>
 </header>
 <aside class="g-aside">
   <h1>

@@ -1,15 +1,19 @@
 <script>
-  export let current;
+  export let current = '';
+  export let layout = '';
+
   import translation from '$lib/translation.json';
   import language from '$lib/store.js';
-  import { getContext } from 'svelte';
-  export let articles = getContext('articles');
   import works from '$lib/works.json';
+  import { getContext } from 'svelte';
+  import { settings } from '$lib/settings.js';
+
+  let articles = getContext('articles');
   works.filter((post) => !post.hidden);
+  let maxPosts = settings.maxPosts;
+  let email = settings.email;
 </script>
 
-<nav class="g-navigation">
-  <div class="g-navigation_container">
     <ul>
       <li class={current === 'home' ? "is-active" : ''}>
         <a href="{current === 'home' ? '/#' : '/'}">
@@ -35,13 +39,14 @@
       </li>
       {#if articles.length > 0}
       <li class={current === 'articles' ? "is-active" : ''}>
-        <a href="{current === 'home' ? '/#articles' : '/articles'}">
+        <a href="{current === 'articles' && layout === 'single' && articles.length > maxPosts ? '/articles' : '/#articles'}">
+        <!-- <a href="/#articles"> -->
           <span lang="{$language}">{translation.articles.title[$language]}</span>
         </a>
       </li>
       {/if}
       <li>
-        <a href="mailto:test@test.com">
+        <a href="mailto:{email}">
           <span lang="{$language}">{translation.contact.title[$language]}</span>
         </a>
         <!-- <ul>
@@ -52,15 +57,10 @@
         </ul> -->
       </li>
       <li>
-        <!-- <button type="button" on:click="{() => changeLang('ja')}" lang="ja">日本語</button>
-        <button type="button" on:click="{() => changeLang('en')}" lang="en">English</button> -->
-
         {#if $language == 'en'}
-        <button type="button" lang="ja" on:click={()=>(language.set('ja'))}>日本語</button>
+        <button type="button" lang="ja" class="m-lang_btn" on:click={()=>(language.set('ja'))}>日本語</button>
         {:else}
-        <button type="button" lang="en" on:click={()=>(language.set('en'))}>English</button>
+        <button type="button" lang="en" class="m-lang_btn" on:click={()=>(language.set('en'))}>English</button>
         {/if}
       </li>
     </ul>
-  </div>
-</nav>

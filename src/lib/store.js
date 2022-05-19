@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
-const baseTitle = import.meta.env.VITE_TITLE;
-// const baseTitle = 'NicoNoClaste : Web developer / ウェブデベロッパー';
+import { settings } from '$lib/settings.js';
+const baseTitle = settings.baseTitle;
 function createTitle() {
   const {subscribe, set} = writable('');
   return {

@@ -16,13 +16,15 @@
   import PostsList from '$lib/components/Posts.svelte';
   import CodeSnippet from '$lib/components/Snippet.svelte';
   import language from '$lib/store.js';
-
   import posts from '$lib/works.json';
+  import { getContext } from 'svelte';
+  import { settings } from '$lib/settings.js';
+
   let works = posts.filter((post) => !post.hidden && post.top);
   works.sort((a, b) => new Date(a.date).getTime() > new Date(b.date).getTime() ? -1 : new Date(a.date).getTime() < new Date(b.date).getTime() ? 1 : 0);
-
-  import { getContext } from 'svelte';
-  export let articles = getContext('articles');
+  let articles = getContext('articles').filter((post) => !post.hidden && post.top);
+  works.sort((a, b) => new Date(a.date).getTime() > new Date(b.date).getTime() ? -1 : new Date(a.date).getTime() < new Date(b.date).getTime() ? 1 : 0);
+  let maxPosts = settings.maxPosts;
 </script>
 <!-- <Bebop /> -->
 
@@ -32,7 +34,7 @@
 
 <main class="g-main">
 
-  <Header current="home"  />
+  <Header current="home" layout="home" />
 
   <article class="l-article" id="about">
 
@@ -84,8 +86,8 @@
       <div class="m-bloc">
         <ul class="m-posts-list">
           {#each works as work, i}
-          {#if i < 8}
-          <li lang="{$language}" data-hidden="{work.hidden}" data-status="{work.status}" data-modified="{work.modified}" data-category="{work.category}">
+          {#if i < maxPosts}
+          <li lang="{$language}">
             <a href="{work.link}" target="_blank" rel="noopener">
               {#if work.thumb}
               <div class="m-posts-list_thumb">
@@ -95,13 +97,6 @@
               <div class="m-posts-list_body">
                 <h2 class="title">{work.title[$language]}</h2>
                 <p class="m-posts-list_desc">{work.client[$language]}</p>
-                <!-- <p class="m-posts-list_date">
-                  {#if $language === 'en'}
-                  {new Intl.DateTimeFormat('ja-JP', {year: 'numeric', month: '2-digit'}).format(new Date(work.date))}
-                  {:else}
-                  {new Intl.DateTimeFormat('ja-JP', {year: 'numeric'}).format(new Date(work.date))}{new Intl.DateTimeFormat('ja-JP', {month: 'numeric'}).format(new Date(work.date))}
-                  {/if}
-                </p> -->
               </div>
               {#if work.tags}
               <div class="m-posts-list_tags">
@@ -118,7 +113,7 @@
       </div>
     </section>
 
-    {#if works.length > 8}
+    {#if works.length > maxPosts}
     <footer class="m-footer">
       <p><a href="/works"> <strong lang="{$language}">{translation.works.more[$language]}</strong></a></p>
     </footer>

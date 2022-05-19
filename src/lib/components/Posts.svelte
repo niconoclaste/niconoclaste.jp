@@ -40,8 +40,8 @@
         </div>
         {/if}
         <div class="m-posts-list_body">
-          <h2 class="title">{post[langKey('title')]}</h2>
-          <p class="m-posts-list_desc">{post[langKey('excerpt')]}</p>
+          <h2 class="title">{@html post[langKey('title')]}</h2>
+          <p class="m-posts-list_desc">{@html post[langKey('excerpt')]}</p>
           <p class="m-posts-list_date">{new Intl.DateTimeFormat('ja-JP', {dateStyle: dateSyle}).format(new Date(post.date))}</p>
         </div>
         {#if post.tags}

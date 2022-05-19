@@ -1,7 +1,10 @@
 <script>
-  let year = new Date().getFullYear();
+  import Nav from '$lib/components/Nav.svelte';
 </script>
 
 <footer class="g-footer">
-  <p>&copy; {year} NicoNoClaste</p>
+  <nav class="g-footer_nav">
+    <!-- <Nav /> -->
+  </nav>
+  <p class="m-footer_copy">&copy; {new Date().getFullYear()} NicoNoClaste</p>
 </footer>
