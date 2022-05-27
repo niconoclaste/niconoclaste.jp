@@ -18,7 +18,7 @@ const config = {
     // target: 'body',
     adapter: adapter(),
     prerender: {
-      enabled: false
+      enabled: true
     },
     browser: {
       router: false

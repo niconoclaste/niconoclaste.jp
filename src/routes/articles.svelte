@@ -17,10 +17,16 @@
 </script>
 <script>
   import PostList from '$lib/components/Posts.svelte';
+  import { getContext } from 'svelte';
+  let articles = getContext('articles');
   // export let posts;
 </script>
-<!-- {#each posts.filter(post => (post.category === 'articles')) as post}
+
+<!-- {#each posts.filter(post => (post.category === 'articles')) as post} -->
+<!-- {#each posts as post}
 <h2>{post.title}</h2>
 {@html post.html}
 {/each} -->
-<PostList display="list" />
+
+
+<PostList display="list" posts="{articles}" />

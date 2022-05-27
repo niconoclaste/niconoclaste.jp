@@ -1,7 +1,11 @@
 {
   "common": {
+    "404": {
+      "en": "oops ! it seems that this page does not exists",
+      "ja": "あれ？このページは存在しないです"
+    },
     "nopost": {
-      "en": "no post available in this category right now",
+      "en": "There is no content right now",
       "ja": "このカテゴリーには記事がまだないです"
     }
   },
@@ -9,10 +13,6 @@
     "title": {
       "en": "home",
       "ja": "ホーム"
-    },
-    "more": {
-      "en": "",
-      "ja": ""
     }
   },
   "about": {
@@ -51,8 +51,12 @@
       "ja": "ライティング"
     },
     "more": {
-      "en": "all articles",
+      "en": "all the articles",
       "ja": "すべての記事"
+    },
+    "readmore": {
+      "en": "read the rest of this article",
+      "ja": "この記事の続きを読む"
     }
   },
   "contact": {

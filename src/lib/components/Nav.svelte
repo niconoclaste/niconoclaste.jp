@@ -16,7 +16,7 @@
 
     <ul>
       <li class={current === 'home' ? "is-active" : ''}>
-        <a href="{current === 'home' ? '/#' : '/'}">
+        <a href="{current === 'home' ? '#top' : '/'}">
           <span lang="{$language}">{translation.home.title[$language]}</span>
         </a>
       </li>
