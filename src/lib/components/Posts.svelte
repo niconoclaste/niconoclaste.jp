@@ -37,7 +37,7 @@
 {#if display === 'list'}
   <ul class="m-posts-list">
     {#each posts as post}
-    <li lang="{$language}">
+    <li>
       <a href="{post.url}">
         {#if post.thumb}
         <div class="m-posts-list_thumb">
@@ -84,7 +84,7 @@
 {:else if display === 'short'}
   <ul>
     {#each posts as post}
-    <li lang="{$language}">
+    <li>
       <a href="{post.url}">
         <h2>{post[langKey('title')]}</h2>
         <h2>{new Intl.DateTimeFormat('ja-JP', {dateStyle: dateSyle}).format(new Date(post.date))}</h2>
@@ -97,6 +97,6 @@
 <!-- no post -->
 {:else}
 <div class="m-bloc">
-  <h2 class="title" lang="{$language}">{translation.common.nopost[$language]}</h2>
+  <h2 class="title">{translation.common.nopost[$language]}</h2>
 </div>
 {/if}

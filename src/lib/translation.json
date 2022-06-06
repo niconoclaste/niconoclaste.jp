@@ -33,6 +33,36 @@
     "more": {
       "en": "all my works",
       "ja": "すべてのワークス"
+    },
+    "categories":{
+      "renewal":{
+        "en": "Site Renewal",
+        "ja": "サイト リニューアル"
+      },
+      "parts":{
+        "en": "Site Parts",
+        "ja": "サイト パーツ"
+      },
+      "full":{
+        "en": "Full Site",
+        "ja": "フール サイト"
+      },
+      "lp":{
+        "en": "Landing Page",
+        "ja": "ランディング ページ"
+      },
+      "mini":{
+        "en": "Mini Site",
+        "ja": "ミニ サイト"
+      },
+      "template":{
+        "en": "CMS Template",
+        "ja": "CMS テンプレート"
+      },
+      "maintenance":{
+        "en": "Site Maintenance",
+        "ja": "サイト運用・改善"
+      }
     }
   },
   "codes": {
@@ -63,6 +93,10 @@
     "title": {
       "en": "contact",
       "ja": "コンタクト"
+    },
+    "email": {
+      "en": "email",
+      "ja": "メール"
     },
     "more": {
       "en": "",

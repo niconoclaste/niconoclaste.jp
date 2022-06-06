@@ -2,12 +2,13 @@
   // export let post;
   import language from '$lib/store.js';
 
+
 </script>
 
 <section class="l-section">
 
   <div class="m-bloc">
-    <h3 lang="en" class="title">About me</h3>
+    <h3 class="title">{#if $language === 'en'}About me{:else}私について{/if}</h3>
     <p>aaaaa</p>
     <!-- <div class="m-bloc">
       <p><strong>1980 :</strong> Born in Paris (France)</p>
@@ -21,7 +22,7 @@
   </div>
 
   <div class="m-bloc">
-    <h3 lang="en" class="title">About this site</h3>
+    <h3 class="title">{#if $language === 'en'}About this site{:else}このサイトについて{/if}</h3>
     <p>aaaaa</p>
   </div>
 

@@ -19,6 +19,7 @@ top: true
   import language from '$lib/store.js';
 </script>
 
+
 {#if $language === 'en'}
 
   <p>What is the work of a web developer ? How the browser works ? What language do I need to learn ?</p>

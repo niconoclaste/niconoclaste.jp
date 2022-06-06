@@ -1,78 +1,96 @@
+<script context="module">
+  export async function load({ fetch }) {
+    let url = 'http://niconoclaste.jp/lib/works/';
+    let res = await fetch(url);
+    if (res.ok) {
+      return {
+        props: {
+          works: await res.json()
+        }
+      };
+    }
+    return {
+      status: res.status,
+      error: new Error(`Could not load ${url}`)
+    };
+  }
+</script>
+
 <script>
   import '$lib/assets/styles.css';
-  import { posts } from '$lib/posts.js';
+  import { articles } from '$lib/articles.js';
   import { setContext } from 'svelte';
   import { browser } from '$app/env';
   import { page } from '$app/stores';
-  import { title } from '$lib/store.js';
   import language from '$lib/store.js';
+  import { settings } from '$lib/settings.js';
 
   import Header from '$lib/components/Header.svelte';
   import Footer from '$lib/components/Footer.svelte';
   import translation from '$lib/translation.json';
 
-  setContext('articles', posts);
+  export let works;
 
-  const pagePath = $page.url.pathname;
-  const pathParts = pagePath.split('/');
-  const pathLength = pathParts.length - 1;
-  let layout = '';
-  let category = pathParts[1];
+  setContext('works', works);
+  let showWorks = works.filter((work) => !work.hidden &&  work.top).length >= settings.maxWorks ? true : false;
+  setContext('showWorks', showWorks);
+
+  let showArticles = articles.filter((article) => !article.hidden &&  article.top).length > 0 ? true : false;
+  setContext('showArticles', showArticles);
+
+
+
+  let pagePath = $page.url.pathname;
+  let pathParts = pagePath.split('/');
+  let pathLength = pathParts.length - 1;
+  
+  let layout = pagePath === '/' ? 'home' : pathLength === 1 ? 'category' : 'single';
+
+  let category = pathParts[1] || 'home';
 
   export let post_title = '';
   export let post_title_ja = '';
   export let post_excerpt = '';
   export let post_excerpt_ja = '';
   export let post_date = '';
-  let lastModified = Date();
-  if(browser){
-    lastModified = new Date(document.lastModified);
-  }
+
+  let lastModified = browser ? new Date(document.lastModified) : Date();
 
   function strip_tags(html){
     return html.replace(/(<([^>]+)>)/gi, "");
-  }
-
+  };
 
   $: dateSyle = $language === 'en' ? 'short' : 'long';
 
-  if(pagePath === '/'){
-    layout = 'home';
-    category = 'home';
-    title.clear();
-  }else{
-    let pageTitle;
-    if(pathLength === 1){
-      layout = 'category';
-      pageTitle = category.charAt(0).toUpperCase() + category.slice(1);
-    }else{
-      layout = 'single';
-      let postTitle = '';
-      const allPosts = import.meta.globEager('./**/*.svelte');
-      for (let path in allPosts) {
-        const post = allPosts[path];
-        if(post.metadata){
-          if(post.metadata.slug === pathParts[pathParts.length - 1]){
-            postTitle = strip_tags(post.metadata.title);
-            post_title = post.metadata.title;
-            post_title_ja = post.metadata.title_ja;
-            post_excerpt = post.metadata.excerpt;
-            post_excerpt_ja = post.metadata.excerpt_ja;
-            post_date = post.metadata.date;
-          }
-        }
+  let pageTitle = [settings.baseTitle];
+  let pageTitle_ja = [settings.baseTitle];
+
+  if(layout !== 'home'){
+    pageTitle = [category.charAt(0).toUpperCase() + category.slice(1), ...pageTitle];
+    pageTitle_ja = [translation[category].title.ja, ...pageTitle_ja];
+
+    if(layout === 'single'){
+      let allPosts;
+      if(category === 'articles'){
+        allPosts = import.meta.globEager('./articles/*.svelte');
+      }else{
+        allPosts = import.meta.globEager('./**/*.svelte');
       }
-      pageTitle = postTitle.charAt(0).toUpperCase() + postTitle.slice(1)+' | '+category.charAt(0).toUpperCase() + category.slice(1);
+      let postMeta = allPosts['./'+category+'/'+pathParts[2]+'.svelte'].metadata;
+      post_title = postMeta.title;
+      post_title_ja = postMeta.title_ja;
+      post_excerpt = postMeta.excerpt;
+      post_excerpt_ja = postMeta.excerpt_ja;
+      post_date = postMeta.date;
+
+      pageTitle = [postMeta.title, ...pageTitle];
+      pageTitle_ja = [postMeta.title_ja, ...pageTitle_ja];
     }
-    
-    title.set(pageTitle);
   }
-
-
 </script>
 
 <svelte:head>
-  <title>{$title}</title>
+  <title>{$language === 'en' ? pageTitle.join(' | ') : pageTitle_ja.join(' | ')}</title>
 </svelte:head>
 
 {#if layout === 'home'}
@@ -85,8 +103,11 @@
     <header class="m-header">
       <h1 class="title">
         <!-- <span lang="{$language}">{translation[category].title[$language]}</span> -->
-        {#if layout === 'category'}<span lang="{$language}">{translation[category].title[$language]}</span>{:else}<span lang="{$language}">{@html $language === 'en' ? post_title : post_title_ja}</span>{/if}
-        
+        {#if layout === 'category'}
+        <span lang="{$language}">{translation[category].title[$language]}</span>
+        {:else}
+        <span lang="{$language}">{@html $language === 'en' ? post_title : post_title_ja}</span>
+        {/if}
       </h1>
     </header>
 

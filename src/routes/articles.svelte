@@ -1,11 +1,11 @@
 <script context="module">
   // export async function load({ fetch }) {
-  //   const url = '/api/posts.json';
+  //   const url = '/api/articles.json';
   //   const res = await fetch(url);
   //   if (res.ok) {
   //     return {
   //       props: {
-  //         posts: await res.json()
+  //         articles: await res.json()
   //       }
   //     };
   //   }
@@ -17,15 +17,14 @@
 </script>
 <script>
   import PostList from '$lib/components/Posts.svelte';
-  import { getContext } from 'svelte';
-  let articles = getContext('articles');
-  // export let posts;
+  import { articles } from '$lib/articles.js';
+  // export let articles;
 </script>
 
-<!-- {#each posts.filter(post => (post.category === 'articles')) as post} -->
-<!-- {#each posts as post}
-<h2>{post.title}</h2>
-{@html post.html}
+<!-- {#each articles.filter(post => (post.category === 'articles')) as post} -->
+<!-- {#each articles as article}
+<h2>{article.title}</h2>
+{@html article.html}
 {/each} -->
 
 

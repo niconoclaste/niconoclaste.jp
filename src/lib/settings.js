@@ -1,5 +1,6 @@
 export const settings = {
   "baseTitle": "NicoNoClaste : Web developer / ウェブデベロッパー",
-  "maxPosts": 8,
+  "maxWorks": 12,
+  "maxArticles": 4,
   "email": "test@test.com"
 };

@@ -2,7 +2,6 @@
   import Nav from '$lib/components/Nav.svelte';
   export let current;
   export let layout;
-  // export let filter;
 </script>
 
 <header class="g-header">
@@ -20,6 +19,7 @@
     </div>
   </nav>
 </header>
+
 <aside class="g-aside">
   <h1>
     <a href="{current === 'home' ? '#top' : '/'}">NicoNoClaste</a>

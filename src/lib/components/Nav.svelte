@@ -4,57 +4,45 @@
 
   import translation from '$lib/translation.json';
   import language from '$lib/store.js';
-  import works from '$lib/works.json';
   import { getContext } from 'svelte';
   import { settings } from '$lib/settings.js';
 
-  let articles = getContext('articles');
-  works.filter((post) => !post.hidden);
-  let maxPosts = settings.maxPosts;
+  const showWorks = getContext('showWorks');
+  const showArticles = getContext('showArticles');
+
   let email = settings.email;
+
 </script>
 
     <ul>
       <li class={current === 'home' ? "is-active" : ''}>
-        <a href="{current === 'home' ? '#top' : '/'}">
-          <span lang="{$language}">{translation.home.title[$language]}</span>
-        </a>
+        <a href="{current === 'home' ? '#top' : '/'}">{translation.home.title[$language]}</a>
       </li>
       <li class={current === 'about' ? "is-active" : ''}>
-        <a href="/#about">
-          <span lang="{$language}">{translation.about.title[$language]}</span>
-        </a>
+        <a href="/#about">{translation.about.title[$language]}</a>
       </li>
-      {#if works.length > 0}
+      {#if showWorks}
       <li class={current === 'works' ? "is-active" : ''}>
-        <a href="/#works">
-          <span lang="{$language}">{translation.works.title[$language]}</span>
-        </a>
+        <a href="/#works">{translation.works.title[$language]}</a>
       </li>
       {/if}
       <li class={current === 'codes' ? "is-active" : ''}>
-        <a href="/#codes">
-          <span lang="{$language}">{translation.codes.title[$language]}</span>
-        </a>
+        <a href="/#codes">{translation.codes.title[$language]}</a>
       </li>
-      {#if articles.length > 0}
+      {#if showArticles}
       <li class={current === 'articles' ? "is-active" : ''}>
-        <a href="{current === 'articles' && layout === 'single' && articles.length > maxPosts ? '/articles' : '/#articles'}">
-        <!-- <a href="/#articles"> -->
-          <span lang="{$language}">{translation.articles.title[$language]}</span>
-        </a>
+        <a href="{current === 'articles' && layout === 'single' ? '/articles' : '/#articles'}">{translation.articles.title[$language]}</a>
       </li>
       {/if}
       <li>
-        <a href="mailto:{email}">
-          <span lang="{$language}">{translation.contact.title[$language]}</span>
-        </a>
-        <!-- <ul>
-          <li><a href="mailto:test@test.com">e-mail</a></li>
-          <li><a href="https://twitter.com/NicoloNoClaste/" target="_blank" rel="noreferrer">twitter</a></li>
-          <li><a href="https://codepen.io/niconoclaste/" target="_blank" rel="noreferrer">codepen</a></li>
-          <li><a href="https://github.com/niconoclaste" target="_blank" rel="noreferrer">github</a></li>
-        </ul> -->
+        <!-- <a href="mailto:{email}">{translation.contact.title[$language]}</a> -->
+        <span>{translation.contact.title[$language]}</span>
+        <ul>
+          <li><a href="mailto:{email}" style="background-image:var(--logo_email)" title="{email}">email</a></li>
+          <li><a href="https://twitter.com/NicoloNoClaste/" target="_blank" rel="noreferrer" title="twitter.com/NicoloNoClaste" style="background-image:var(--logo_twitter)">twitter</a></li>
+          <li><a href="https://codepen.io/niconoclaste/" target="_blank" rel="noreferrer" title="codepen.io/niconoclaste" style="background-image:var(--logo_codepen)">codepen</a></li>
+          <li><a href="https://github.com/niconoclaste" target="_blank" rel="noreferrer" title="github.com/niconoclaste" style="background-image:var(--logo_github)">github</a></li>
+        </ul>
       </li>
       <li>
         {#if $language == 'en'}
