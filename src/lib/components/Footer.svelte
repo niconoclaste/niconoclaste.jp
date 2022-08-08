@@ -1,5 +1,5 @@
 <script>
-  import Nav from '$lib/components/Nav.svelte';
+  import Nav from '@components/Nav.svelte';
 </script>
 
 <footer class="g-footer">

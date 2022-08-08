@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { settings } from '$lib/settings.js';
+import { settings } from '@lib/settings.js';
 const baseTitle = settings.baseTitle;
 function createTitle() {
   const {subscribe, set} = writable('');

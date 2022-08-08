@@ -2,10 +2,10 @@
   export let current = '';
   export let layout = '';
 
-  import translation from '$lib/translation.json';
-  import language from '$lib/store.js';
+  import translation from '@lib/translation.json';
+  import language from '@lib/store.js';
   import { getContext } from 'svelte';
-  import { settings } from '$lib/settings.js';
+  import { settings } from '@lib/settings.js';
 
   const showWorks = getContext('showWorks');
   const showArticles = getContext('showArticles');

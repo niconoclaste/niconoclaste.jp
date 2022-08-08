@@ -2,7 +2,7 @@
   export let id;
   export let title;
   export let title_ja;
-  import language from '$lib/store.js';
+  import language from '@lib/store.js';
 </script>
 
 <div class="m-bloc">

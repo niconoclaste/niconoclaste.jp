@@ -1,6 +1,7 @@
 import preprocess from 'svelte-preprocess';
 import adapter from '@sveltejs/adapter-static';
 import { mdsvex } from 'mdsvex';
+import path from 'path';
 const extensions = ['.svelte'];
 
 const config = {
@@ -22,8 +23,17 @@ const config = {
     },
     browser: {
       router: false
-    }
-  },
+    },
+		vite: {
+			resolve: {
+				alias: {
+					'@components': path.resolve('./src/lib/components'),
+					'@lib': path.resolve('./src/lib'),
+					'@assets': path.resolve('./src/lib/assets')
+				}
+			}
+		}
+  }
 };
 
 export default config;

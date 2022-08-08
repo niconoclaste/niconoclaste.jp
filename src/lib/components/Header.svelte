@@ -1,19 +1,17 @@
 <script>
-  import Nav from '$lib/components/Nav.svelte';
+  import Nav from '@components/Nav.svelte';
   export let current;
   export let layout;
+
+	let naviIsopened = false;
 </script>
 
 <header class="g-header">
-  <nav class="g-navigation" tabindex="0">
-    <button class="m-hamburger open">
-      <i></i><i></i><i></i>
-    </button>
-    <button class="m-hamburger close">
-      <span></span>
-      <span></span>
-    </button>
 
+  <nav class="g-navigation" tabindex="0">
+		<button class="m-hamburger" class:is-closed={naviIsopened} on:click={() => naviIsopened = !naviIsopened}>
+			<i></i><i></i><i></i>
+		</button>
     <div class="g-navigation_container">
       <Nav current={current} layout={layout} />
     </div>

@@ -206,16 +206,19 @@ html[lang="ja"] .l-article .l-section > p{
   font-weight: 100;
   opacity:0.7;
 }
+.g-navigation ul li {
+	transition: transform 0.1s, opacity 0.1s;
+	transform-origin: left center;
+	opacity: 0.5;
+}
+.g-navigation:hover ul li{
+	opacity: 0.2;
+}
+
+
 @media (hover: hover) {
-  .g-navigation ul li {
-    transition: transform 0.1s, opacity 0.1s;
-    transform-origin: left center;
-    opacity: 0.5;
-  }
-  .g-navigation:hover ul li{
-    opacity: 0.2;
-  }
-  .g-navigation::before{
+
+  /* .g-navigation::before{
     content: '';
     position: fixed;
     left: 0;
@@ -229,7 +232,7 @@ html[lang="ja"] .l-article .l-section > p{
   }
   .g-navigation:hover::before {
     opacity: 0.8;
-  }
+  } */
 }
 
 .g-navigation ul li a,
@@ -253,6 +256,15 @@ html[lang="ja"] .l-article .l-section > p{
     opacity:1;
     z-index:2;
   }
+  /* .g-navigation ul li:has(+ li:hover),
+  .g-navigation ul li:hover + li{
+    transform:scale(1.5);
+  }
+  .g-navigation ul li:has(+ li + li:hover),
+  .g-navigation ul li:hover + li + li{
+    transform:scale(1.25);
+  } */
+
 }
 @media (hover: none) {
   .g-navigation ul li:focus-within,
@@ -908,10 +920,39 @@ section + main > #about.l-article .l-section{
   text-decoration:none;
 }
 
-.m-hamburger{
+/* .m-hamburger{
   display:none;
+} */
+button.m-hamburger{
+	display: flex;
+	cursor: pointer;
+	width: 70px;
+	height: 50px;
+	border: none;
+	margin: 10px 0;
+	position: relative;
+	left: 0;
+	top: 0;
+	padding: 0;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap:10px 0;
+}
+button.m-hamburger i{
+	width:calc(100% - 22px);
+	height:3px;
+	display:block;
+	background:white;
 }
 
+.g-navigation_container{
+	transform:translateX(-200%);
+	transition:transform 0.25s ease-out;
+}
+button.m-hamburger.is-closed + .g-navigation_container{
+	transform:translateX(0);
+}
 
 /* -- tablets -- */
 @media (max-width: 1100px) {
@@ -1058,6 +1099,18 @@ section + main > #about.l-article .l-section{
     background:white;
   }
 
+  .g-navigation button.m-hamburger{
+    display: flex;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border: none;
+    margin: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0;
+  }
   button.m-hamburger.open{
     align-items: center;
     justify-content: center;
