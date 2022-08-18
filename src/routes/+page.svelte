@@ -55,8 +55,9 @@
 
       <p>
         HTML&nbsp;<strong>CSS</strong>&nbsp;SCSS <strong>JavaScript</strong>&nbsp;TypeScript<br>
-        <strong>Svelte</strong>&nbsp;Vue <strong>Astro</strong>&nbsp;Eleventy <strong>Sveltekit</strong><br>
-        <strong>Node.js</strong>&nbsp;Ionic <strong>PHP</strong> SQL&nbsp;<strong>WordPress</strong> ...
+        <strong>Svelte</strong>&nbsp;Vue <strong>Astro</strong>&nbsp;Eleventy <strong>Sveltekit</strong>&nbsp;Nuxt<br>
+        <!-- <strong>Node.js</strong>&nbsp;Ionic <strong>PHP</strong> SQL&nbsp;<strong>WordPress</strong> ... -->
+        <strong>PHP</strong> SQL&nbsp;<strong>WordPress</strong> ...
       </p>
     </section>
 
