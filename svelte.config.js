@@ -1,9 +1,9 @@
 import preprocess from 'svelte-preprocess';
-import adapter from '@sveltejs/adapter-static';
+import adapter from '@sveltejs/adapter-auto';
 import { mdsvex } from 'mdsvex';
-import path from 'path';
 const extensions = ['.svelte'];
 
+/** @type {import('@sveltejs/kit').Config} */
 const config = {
   preprocess: [
     preprocess({
@@ -23,16 +23,7 @@ const config = {
     },
     browser: {
       router: false
-    },
-		vite: {
-			resolve: {
-				alias: {
-					'@components': path.resolve('./src/lib/components'),
-					'@lib': path.resolve('./src/lib'),
-					'@assets': path.resolve('./src/lib/assets')
-				}
-			}
-		}
+    }
   }
 };
 

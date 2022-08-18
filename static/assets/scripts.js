@@ -3,6 +3,11 @@ function draggableSlider(element) {
   let startX;
   let scrollLeft;
   const slider = element.querySelector('.m-works-list');
+  const sliderWidth = slider.outerWidth;
+	const slide = slider.querySelector('li');
+	const slideWidth = slide.outerWidth;
+	console.log(sliderWidth);
+	console.log(slideWidth);
   const end = () => {
     isDown = false;
     slider.classList.remove('draggin');
@@ -40,5 +45,6 @@ function draggableSlider(element) {
   })();
 };
 
-
+if(document.getElementById('top-works')){
 draggableSlider(document.getElementById('top-works'));
+}

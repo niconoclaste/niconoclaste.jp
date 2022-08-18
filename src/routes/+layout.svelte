@@ -1,38 +1,23 @@
-<script context="module">
-  export async function load({ fetch }) {
-    let url = 'http://niconoclaste.jp/lib/works/';
-    let res = await fetch(url);
-    if (res.ok) {
-      return {
-        props: {
-          works: await res.json()
-        }
-      };
-    }
-    return {
-      status: res.status,
-      error: new Error(`Could not load ${url}`)
-    };
-  }
-</script>
-
 <script>
   import '$lib/assets/styles.css';
-  import { articles } from '$lib/articles.js';
+
   import { setContext } from 'svelte';
   import { browser } from '$app/env';
   import { page } from '$app/stores';
   import language from '$lib/store.js';
-  import { settings } from '$lib/settings.js';
 
+  import { settings } from '$lib/settings.js';
+  import { articles } from '$lib/articles.js';
   import Header from '$lib/components/Header.svelte';
   import Footer from '$lib/components/Footer.svelte';
   import translation from '$lib/translation.json';
 
-  export let works;
+  export let data;
+	let {works} = data;
 
   setContext('works', works);
   let showWorks = works.filter((work) => !work.hidden &&  work.top).length >= settings.maxWorks ? true : false;
+
   setContext('showWorks', showWorks);
 
   let showArticles = articles.filter((article) => !article.hidden &&  article.top).length > 0 ? true : false;
@@ -72,19 +57,24 @@
     if(layout === 'single'){
       let allPosts;
       if(category === 'articles'){
-        allPosts = import.meta.globEager('./articles/*.svelte');
+				// const glob_import = 
+        allPosts = import.meta.glob(
+					['./articles/**/+page.svelte', '!./articles/+page.svelte'],
+					{eager: true}
+				);			
       }else{
         allPosts = import.meta.globEager('./**/*.svelte');
       }
-      let postMeta = allPosts['./'+category+'/'+pathParts[2]+'.svelte'].metadata;
+
+      let postMeta = allPosts['./'+category+'/'+pathParts[2]+'/+page.svelte'].metadata;
       post_title = postMeta.title;
       post_title_ja = postMeta.title_ja;
       post_excerpt = postMeta.excerpt;
       post_excerpt_ja = postMeta.excerpt_ja;
       post_date = postMeta.date;
 
-      pageTitle = [postMeta.title, ...pageTitle];
-      pageTitle_ja = [postMeta.title_ja, ...pageTitle_ja];
+      pageTitle = [post_title, ...pageTitle];
+      pageTitle_ja = [post_title_ja, ...pageTitle_ja];
     }
   }
 </script>

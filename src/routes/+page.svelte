@@ -55,14 +55,14 @@
 
       <p>
         HTML&nbsp;<strong>CSS</strong>&nbsp;SCSS <strong>JavaScript</strong>&nbsp;TypeScript<br>
-        <strong>Svelte</strong>&nbsp;Vue <strong>Eleventy</strong>&nbsp;Astro<br>
-        <strong>Node</strong>&nbsp;Ionic&nbsp;<strong>PHP</strong> SQL&nbsp;<strong>WordPress</strong> ...
+        <strong>Svelte</strong>&nbsp;Vue <strong>Astro</strong>&nbsp;Eleventy <strong>Sveltekit</strong><br>
+        <strong>Node.js</strong>&nbsp;Ionic <strong>PHP</strong> SQL&nbsp;<strong>WordPress</strong> ...
       </p>
     </section>
 
-    <!-- <footer class="m-footer">
+    <footer class="m-footer">
       <p><a href="/about"><strong lang="{$language}">{translation.about.more[$language]}</strong></a></p>
-    </footer> -->
+    </footer>
 
   </article>
 

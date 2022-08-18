@@ -4,16 +4,20 @@
   export let layout;
 
 	let naviIsopened = false;
+
+	function switchMenu(){
+		naviIsopened = !naviIsopened;
+	}
 </script>
 
 <header class="g-header">
 
   <nav class="g-navigation" tabindex="0">
-		<button class="m-hamburger" class:is-closed={naviIsopened} on:click={() => naviIsopened = !naviIsopened}>
+		<button class="m-hamburger" class:is-closed={naviIsopened} on:click={switchMenu}>
 			<i></i><i></i><i></i>
 		</button>
     <div class="g-navigation_container">
-      <Nav current={current} layout={layout} />
+      <Nav current={current} layout={layout} on:linkClick={switchMenu} />
     </div>
   </nav>
 </header>
