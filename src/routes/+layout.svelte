@@ -38,8 +38,7 @@
   export let post_excerpt = '';
   export let post_excerpt_ja = '';
   export let post_date = '';
-
-  let lastModified = browser ? new Date(document.lastModified) : Date();
+  export let post_lastModified = '';
 
   function strip_tags(html){
     return html.replace(/(<([^>]+)>)/gi, "");
@@ -57,13 +56,12 @@
     if(layout === 'single'){
       let allPosts;
       if(category === 'articles'){
-				// const glob_import = 
         allPosts = import.meta.glob(
 					['./articles/**/+page.svelte', '!./articles/+page.svelte'],
 					{eager: true}
-				);			
+				);
       }else{
-        allPosts = import.meta.globEager('./**/*.svelte');
+        allPosts = import.meta.globEager('./**/*+page.svelte');
       }
 
       let postMeta = allPosts['./'+category+'/'+pathParts[2]+'/+page.svelte'].metadata;
@@ -72,6 +70,7 @@
       post_excerpt = postMeta.excerpt;
       post_excerpt_ja = postMeta.excerpt_ja;
       post_date = postMeta.date;
+      post_lastModified = postMeta.lastModified;
 
       pageTitle = [post_title, ...pageTitle];
       pageTitle_ja = [post_title_ja, ...pageTitle_ja];
@@ -106,7 +105,10 @@
       <div class="m-bloc">
         {#if layout === 'single'}
           <h3 lang="{$language}" class="title">{@html $language === 'en' ? post_excerpt : post_excerpt_ja}</h3>
-          <p lang="{$language}" class="m-article-date">{new Intl.DateTimeFormat('ja-JP', {dateStyle: dateSyle}).format(new Date(post_date))}<small>(modified : {new Intl.DateTimeFormat('ja-JP', {dateStyle: dateSyle}).format(new Date(lastModified))})</small>
+          
+					<p lang="{$language}" class="m-article-date">
+						{new Intl.DateTimeFormat('ja-JP', {dateStyle: dateSyle}).format(new Date(post_date))}
+						<small>(modified : {new Intl.DateTimeFormat('ja-JP', {dateStyle: dateSyle}).format(new Date(post_lastModified))})</small>
           </p>
         {/if}
         <slot></slot>

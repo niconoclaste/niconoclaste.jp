@@ -48,7 +48,10 @@
         <div class="m-posts-list_body">
           <p class="m-posts-list_category">{@html post[langKey('category')]}</p>
           <h2 class="title">{@html post[langKey('title')]}</h2>
-          <p class="m-posts-list_date">{new Intl.DateTimeFormat('ja-JP', {dateStyle: dateSyle}).format(new Date(post.date))}</p>
+          <p class="m-posts-list_date">
+						{new Intl.DateTimeFormat('ja-JP', {dateStyle: dateSyle}).format(new Date(post.date))}
+						<small>({@html $language === "en" ? 'updated : ' : '更新：'}{new Intl.DateTimeFormat('ja-JP', {dateStyle: dateSyle}).format(new Date(post.lastModified))})</small>
+					</p>
           <p class="m-posts-list_desc">{@html post[langKey('excerpt')]}</p>
           {#if post.series && $language === 'en'}
           <p class="m-post-list_series">This article is the {nth(post.series_nb)} part of the [{post.series}] series.</p>

@@ -3,6 +3,7 @@ slug: intro-2-webdev2
 title: "Intoduction to web development"
 title_ja: "ウェブデベロップメント入門"
 date: 2022-01-18
+lastModified: 2022-08-23
 excerpt: "An extremely simplified explanation to web development. <br>What is the work of a web developer ?<br>How the browser works ?<br>What language do I need to learn ?"
 excerpt_ja: "非常に分かりやすいウェブデベロップメントの説明"
 tags: [HTML, CSS]
