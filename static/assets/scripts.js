@@ -46,5 +46,16 @@ function draggableSlider(element) {
 };
 
 if(document.getElementById('top-works')){
-draggableSlider(document.getElementById('top-works'));
+	draggableSlider(document.getElementById('top-works'));
 }
+
+function setWave(){
+	const yDecal = parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--yDecal'));
+	const scale = parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--scale'));
+	const adjust = parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--adjust'));
+	const radius = window.innerWidth * scale;
+	const xDecal = Math.sqrt(((radius / 2) ** 2) - ((((radius / 2) - yDecal) + adjust) ** 2));
+	document.documentElement.style.setProperty('--xDecal', xDecal+'px');
+}
+setWave();
+addEventListener('resize', (e) => {setWave()});

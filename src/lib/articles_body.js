@@ -1,11 +1,15 @@
-const imports = import.meta.globEager('/src/routes/articles/**/*.svelte');
+const glob_import = import.meta.glob(
+	['/src/routes/articles/**/+page.svelte', '!/src/routes/articles/+page.svelte'],
+	{eager: true}
+);
+const imports = Object.entries(glob_import);
 const articles = [];
 for (const path in imports) {
-  const article = imports[path];
+  const article = imports[path][1];
   if (article) {
     if (article.metadata) {
       const category = article.metadata.category;
-      const url = path.replace('/src/routes', '').replace('.svelte', '/');
+      const url = path.replace('/src/routes', '').replace('+page.svelte', '');
       articles.push({
         category,
         url,

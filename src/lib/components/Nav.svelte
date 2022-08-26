@@ -19,23 +19,23 @@
 </script>
 
     <ul>
-      <li class={current === 'home' ? "is-active" : ''} on:click={linkClick}>
-        <a href="{current === 'home' ? '#top' : '/'}">{translation.home.title[$language]}</a>
+      <li class={current === 'home' ? "is-active" : ''}>
+        <a href="{current === 'home' ? '#top' : '/'}" on:click={linkClick} sveltekit:prefetch>{translation.home.title[$language]}</a>
       </li>
-      <li class={current === 'about' ? "is-active" : ''} on:click={linkClick}>
-        <a href="/#about">{translation.about.title[$language]}</a>
+      <li class={current === 'about' ? "is-active" : ''}>
+        <a href="/#about" on:click={linkClick} sveltekit:prefetch>{translation.about.title[$language]}</a>
       </li>
       {#if showWorks}
-      <li class={current === 'works' ? "is-active" : ''} on:click={linkClick}>
-        <a href="/#works">{translation.works.title[$language]}</a>
+      <li class={current === 'works' ? "is-active" : ''}>
+        <a href="/#works" on:click={linkClick} sveltekit:prefetch>{translation.works.title[$language]}</a>
       </li>
       {/if}
-      <li class={current === 'codes' ? "is-active" : ''} on:click={linkClick}>
-        <a href="/#codes">{translation.codes.title[$language]}</a>
+      <li class={current === 'codes' ? "is-active" : ''}>
+        <a href="/#codes" on:click={linkClick} sveltekit:prefetch>{translation.codes.title[$language]}</a>
       </li>
       {#if showArticles}
-      <li class={current === 'articles' ? "is-active" : ''} on:click={linkClick}>
-        <a href="{current === 'articles' && layout === 'single' ? '/articles' : '/#articles'}">{translation.articles.title[$language]}</a>
+      <li class={current === 'articles' ? "is-active" : ''}>
+        <a href="{current === 'articles' && layout === 'single' ? '/articles' : '/#articles'}" on:click={linkClick} sveltekit:prefetch>{translation.articles.title[$language]}</a>
       </li>
       {/if}
       <li>
@@ -50,9 +50,9 @@
       </li>
       <li>
         {#if $language == 'en'}
-        <button type="button" lang="ja" class="m-lang_btn" on:click={linkClick} on:click={()=>(language.set('ja'))} >日本語</button>
+        <button type="button" class="m-lang_btn" on:click={linkClick} on:click={()=>(language.set('ja'))} >日本語</button>
         {:else}
-        <button type="button" lang="en" class="m-lang_btn"on:click={linkClick} on:click={()=>(language.set('en'))}>English</button>
+        <button type="button" class="m-lang_btn"on:click={linkClick} on:click={()=>(language.set('en'))}>English</button>
         {/if}
       </li>
     </ul>

@@ -9,8 +9,8 @@ for (const path in imports) {
 	
   if (article) {
     if (article.metadata) {
-      const category = article.metadata.category;
-      const url = imports[path][0].replace('/src/routes', '').replace('+page.svelte', '');
+      const category = 'articles';
+      const url = '/articles/'+article.metadata.slug;
       articles.push({
         category,
         url,

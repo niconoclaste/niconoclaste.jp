@@ -1,5 +1,7 @@
 import { writable } from 'svelte/store';
-import { settings } from '@lib/settings.js';
+import { settings } from '$lib/settings.js';
+import { browser } from '$app/env';
+
 const baseTitle = settings.baseTitle;
 function createTitle() {
   const {subscribe, set} = writable('');
@@ -15,7 +17,7 @@ function createTitle() {
 }
 export const title = createTitle();
 
-import { browser } from '$app/env';
+
 let lang = 'en';
 if(browser){
   lang = window.localStorage.getItem('lang');
